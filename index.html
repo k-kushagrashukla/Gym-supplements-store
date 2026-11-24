@@ -1,0 +1,1452 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Forge Nutrition: protein, creatine, pre-workouts and gym gear.">
+<title>Forge Nutrition</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800;900&family=Inter:wght@400;500;600;700&display=swap">
+<style>
+/* Layout concept: navy sports-shop bands over a cool light ground; condensed display type for headlines and prices; every product drawn as a pack. */
+:root{
+  --bg:#f3f5f9; --surface:#ffffff; --surface-2:#e8ecf4; --ink:#0d1733; --muted:#566178; --line:#d7dde9;
+  --accent:#d4460a; --on-accent:#ffffff; --band:#0e1a3a; --on-band:#f2f5ff; --band-muted:#a9b6d6;
+  --good:#0f7a3d; --warn:#9a5b00; --bad:#b42318; --star:#e0a100; --focus:#2457ff; --r:6px;
+  --display:'Big Shoulders Display','Arial Narrow',Impact,sans-serif;
+  --body:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0a1126; --surface:#111b38; --surface-2:#1a2547; --ink:#eaf0ff; --muted:#9eaccb; --line:#26335b;
+  --accent:#ff6a2a; --on-accent:#1b0d05; --band:#060c20; --on-band:#f2f5ff; --band-muted:#9eaccb;
+  --good:#46d17d; --warn:#f0b24b; --bad:#ff8a7a; --star:#f2b630; --focus:#7da2ff; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0a1126; --surface:#111b38; --surface-2:#1a2547; --ink:#eaf0ff; --muted:#9eaccb; --line:#26335b;
+  --accent:#ff6a2a; --on-accent:#1b0d05; --band:#060c20; --on-band:#f2f5ff; --band-muted:#9eaccb;
+  --good:#46d17d; --warn:#f0b24b; --bad:#ff8a7a; --star:#f2b630; --focus:#7da2ff; color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{background:var(--bg);color:var(--ink);font:400 15px/1.55 var(--body);-webkit-text-size-adjust:100%;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--surface);z-index:60}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,h4{font-family:var(--display);text-transform:uppercase;line-height:1;margin:0;letter-spacing:.01em;font-weight:800;text-wrap:balance}
+h1{font-size:clamp(34px,6vw,60px)} h2{font-size:clamp(28px,4vw,40px)} h3{font-size:22px} h4{font-size:17px;letter-spacing:.04em}
+p{margin:0}
+button{font:inherit;color:inherit;cursor:pointer;background:none;border:0;padding:0}
+input,select,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:var(--r);min-height:44px;padding:0 12px;width:100%;min-width:0}
+textarea{padding:10px 12px;min-height:90px;resize:vertical}
+input[type=checkbox],input[type=radio]{width:18px;height:18px;min-height:0;padding:0;accent-color:var(--accent);flex:none}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+label{cursor:pointer}
+.ic{flex:none;display:block}
+.wrap{max-width:1260px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.muted{color:var(--muted)} .good{color:var(--good)} .bad{color:var(--bad)} .warn{color:var(--warn)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.num{font-variant-numeric:tabular-nums}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 20px;border-radius:var(--r);background:var(--accent);color:var(--on-accent);font-weight:700;border:2px solid var(--accent);text-align:center;line-height:1.2}
+.btn:hover{filter:brightness(1.07)}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn.ghost:hover{border-color:var(--ink);filter:none}
+.btn.dark{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.btn.sm{min-height:36px;padding:0 14px;font-size:14px}
+.btn.block{width:100%}
+.btn[disabled]{opacity:.5;cursor:not-allowed;filter:none}
+.link{color:var(--accent);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.pill{display:inline-flex;align-items:center;gap:6px;border-radius:99px;padding:2px 10px;font-size:12px;font-weight:600;background:var(--surface-2);color:var(--muted);white-space:nowrap}
+.pill.sample{background:transparent;border:1px dashed var(--line)}
+
+/* announcement + header */
+.ann{background:var(--band);color:var(--on-band);font-size:13px}
+.ann-in{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;padding-block:8px;text-align:center}
+.ann b{color:var(--on-band);letter-spacing:.06em}
+.hdr{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:var(--surface);border-bottom:1px solid var(--line)}
+.hdr-in{display:flex;align-items:center;gap:14px;padding-block:10px;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:8px;color:var(--accent)}
+.logo svg{width:34px;height:34px;fill:currentColor}
+.logo span{font:900 28px/1 var(--display);color:var(--ink);letter-spacing:.04em}
+.logo small{font:600 10px/1 var(--body);letter-spacing:.28em;color:var(--muted);display:block;margin-top:3px}
+.logo div{display:flex;flex-direction:column}
+.search{position:relative;flex:1 1 280px;max-width:560px;display:flex}
+.search input{padding-right:48px;border-radius:99px;background:var(--bg)}
+.search>button{position:absolute;right:4px;top:4px;width:36px;height:36px;border-radius:50%;background:var(--accent);color:var(--on-accent);display:grid;place-items:center}
+.sugg{position:absolute;top:calc(100% + 6px);left:0;right:0;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);box-shadow:0 12px 32px rgba(8,14,40,.18);z-index:70;overflow:hidden}
+.sugg a{display:flex;gap:10px;align-items:center;padding:8px 12px}
+.sugg a:hover,.sugg a:focus-visible{background:var(--surface-2)}
+.sugg .st{width:38px;height:38px;border-radius:4px;background:var(--surface-2);flex:none;overflow:hidden}
+.sugg small{color:var(--muted);display:block}
+.tools{display:flex;gap:2px;margin-left:auto}
+.tool{position:relative;width:44px;height:44px;display:grid;place-items:center;border-radius:50%}
+.tool:hover{background:var(--surface-2)}
+.badge{position:absolute;top:2px;right:0;min-width:18px;height:18px;border-radius:9px;background:var(--accent);color:var(--on-accent);font:700 11px/18px var(--body);text-align:center;padding:0 4px;font-style:normal}
+.badge:empty{display:none}
+.cats{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;padding-bottom:8px}
+.cats::-webkit-scrollbar{display:none}
+.cats a{white-space:nowrap;padding:6px 12px;border-radius:99px;font-weight:600;font-size:14px;color:var(--muted)}
+.cats a:hover{background:var(--surface-2);color:var(--ink)}
+.cats a.on{background:var(--ink);color:var(--bg)}
+@media (max-width:700px){.search{order:5;flex-basis:100%;max-width:none}.logo small{display:none}}
+
+/* hero */
+.hero{background:var(--band);color:var(--on-band);overflow:hidden}
+.hero-in{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:24px;align-items:center;padding-block:48px}
+.hero h1{font-size:clamp(52px,9.5vw,116px);font-weight:900;line-height:.88;letter-spacing:0}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero p{color:var(--band-muted);max-width:46ch;margin-top:18px;font-size:17px}
+.hero .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}
+.hero .btn.ghost{color:var(--on-band);border-color:rgba(255,255,255,.35)}
+.hero .code{margin-top:18px;font-size:14px;color:var(--band-muted)}
+.hero .code b{color:var(--on-band);border:1px dashed rgba(255,255,255,.5);padding:2px 8px;border-radius:4px;letter-spacing:.08em}
+.hero-art{position:relative;min-width:0;max-width:520px;justify-self:center;width:100%}
+.hero-art svg{width:100%;height:auto;display:block}
+@media (max-width:820px){.hero-in{grid-template-columns:minmax(0,1fr);padding-block:32px}.hero-art{max-width:360px;order:-1}}
+.trust{background:var(--surface);border-bottom:1px solid var(--line)}
+.trust-in{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;padding-block:16px}
+.trust-it{display:flex;gap:10px;align-items:center;font-size:13px;line-height:1.3;min-width:0}
+.trust-it b{display:block;font-size:14px}
+.trust-it .ic{color:var(--accent)}
+@media (max-width:820px){.trust-in{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* sections */
+.sec{padding-block:40px}
+.sec-h{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;margin-bottom:20px;flex-wrap:wrap}
+.sec-h p{color:var(--muted);margin-top:6px}
+.rail-wrap{position:relative}
+.rail{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x proximity;padding-bottom:10px;scrollbar-width:thin}
+.rail>*{flex:0 0 min(240px,68vw);scroll-snap-align:start}
+.rail-btn{position:absolute;top:36%;width:40px;height:40px;border-radius:50%;background:var(--surface);border:1px solid var(--line);display:grid;place-items:center;box-shadow:0 4px 14px rgba(8,14,40,.18);z-index:2}
+.rail-btn.l{left:-14px}.rail-btn.r{right:-14px}
+.rail-btn.l .ic{transform:rotate(180deg)}
+@media (max-width:900px){.rail-btn{display:none}}
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+.cat-t{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:block}
+.cat-t:hover{border-color:var(--accent)}
+.cat-t .im{aspect-ratio:1/.8;background:var(--surface-2);display:grid;place-items:center}
+.cat-t .im svg{width:78%;height:auto}
+.cat-t b{display:block;padding:10px 12px;font:800 18px/1 var(--display);text-transform:uppercase;letter-spacing:.03em}
+.goal-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.goal{background:var(--band);color:var(--on-band);border-radius:var(--r);padding:20px;display:flex;flex-direction:column;gap:10px;min-height:170px;position:relative;overflow:hidden}
+.goal h3{font-size:30px}
+.goal p{color:var(--band-muted);font-size:14px}
+.goal span{margin-top:auto;font-weight:700;color:var(--on-band);display:flex;gap:6px;align-items:center}
+.goal:hover span{color:var(--accent)}
+@media (max-width:900px){.goal-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.brands{display:flex;flex-wrap:wrap;gap:10px}
+.brands a{flex:1 1 150px;text-align:center;padding:18px 10px;border:1px solid var(--line);border-radius:var(--r);background:var(--surface);font:900 24px/1 var(--display);text-transform:uppercase;letter-spacing:.06em}
+.brands a:hover{border-color:var(--accent)}
+.band-cta{background:var(--band);color:var(--on-band);border-radius:var(--r);padding:32px;display:flex;gap:20px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.band-cta p{color:var(--band-muted);margin-top:8px;max-width:52ch}
+.news{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.news input{flex:1 1 220px;max-width:360px}
+.news-box{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:28px}
+
+/* product cards */
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px}
+@media (max-width:560px){.pgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}}
+.pc{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);display:flex;flex-direction:column;min-width:0}
+.pc:hover{border-color:var(--ink)}
+.pc-img{display:block;aspect-ratio:1/1;background:var(--surface-2);position:relative;border-radius:var(--r) var(--r) 0 0;overflow:hidden}
+.pc-img svg,.gal-main svg{width:100%;height:100%;display:block}
+.tag{position:absolute;left:8px;top:8px;display:flex;flex-direction:column;gap:4px;align-items:flex-start}
+.tag span{font:700 11px/1 var(--body);padding:5px 7px;border-radius:3px;letter-spacing:.04em;text-transform:uppercase}
+.tag .off{background:var(--accent);color:var(--on-accent)}
+.tag .new{background:var(--ink);color:var(--bg)}
+.tag .oos{background:var(--bad);color:#fff}
+.wish{position:absolute;right:8px;top:8px;width:36px;height:36px;border-radius:50%;background:var(--surface);display:grid;place-items:center;border:1px solid var(--line);z-index:2}
+.wish.on{color:var(--accent);border-color:var(--accent)}
+.pc-b{padding:12px;display:flex;flex-direction:column;gap:6px;flex:1;min-width:0}
+.pc-brand{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:6px;text-transform:uppercase;letter-spacing:.08em;font-weight:600}
+.dot{width:12px;height:12px;border:1.5px solid var(--good);display:inline-grid;place-items:center;border-radius:2px;flex:none}
+.dot::after{content:"";width:6px;height:6px;border-radius:50%;background:var(--good)}
+.dot.nv{border-color:var(--bad)}.dot.nv::after{background:var(--bad)}
+.pc-name{font-weight:600;line-height:1.3;overflow-wrap:anywhere}
+.pc-name:hover{color:var(--accent)}
+.pc-r{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted)}
+.stars{--r:90%;display:inline-block;font-size:14px;letter-spacing:1px;line-height:1}
+.stars::before{content:"★★★★★";background:linear-gradient(90deg,var(--star) var(--r),var(--line) var(--r));-webkit-background-clip:text;background-clip:text;color:transparent}
+.pc-p{display:flex;gap:8px;align-items:baseline;flex-wrap:wrap}
+.pc-p b{font:800 24px/1 var(--display);letter-spacing:.02em}
+.pc-p s{color:var(--muted);font-size:13px}
+.pc-p em{font-style:normal;color:var(--good);font-weight:700;font-size:12px}
+.pc-a{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:auto;padding-top:6px}
+.cmp{display:flex;gap:6px;align-items:center;font-size:12px;color:var(--muted)}
+
+/* shop */
+.crumb{font-size:13px;color:var(--muted);padding-block:14px;display:flex;gap:6px;flex-wrap:wrap}
+.crumb a:hover{color:var(--accent)}
+.shop-h{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap;margin-bottom:16px}
+.shop{display:grid;grid-template-columns:250px minmax(0,1fr);gap:24px;padding-bottom:48px}
+.filters{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:6px 16px 16px;align-self:start;position:sticky;top:calc(env(safe-area-inset-top,0px) + 118px)}
+.fg{border-bottom:1px solid var(--line);padding:14px 0}
+.fg:last-of-type{border-bottom:0}
+.fg h4{margin-bottom:10px}
+.fo{display:flex;align-items:center;gap:8px;padding:4px 0;font-size:14px}
+.fo .sw{width:12px;height:12px;border-radius:50%;border:1px solid var(--line);flex:none}
+.sbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:14px}
+.sbar select{width:auto;min-width:180px}
+.fchips{display:flex;gap:6px;flex-wrap:wrap}
+.fchip{display:inline-flex;align-items:center;gap:6px;background:var(--surface-2);border-radius:99px;padding:4px 6px 4px 12px;font-size:13px;font-weight:600}
+.fchip button{width:20px;height:20px;border-radius:50%;display:grid;place-items:center}
+.fchip button:hover{background:var(--line)}
+.f-toggle{display:none}
+.f-close{display:none}
+.scrim{position:fixed;inset:0;background:rgba(5,9,25,.55);z-index:80;opacity:0;pointer-events:none;transition:opacity .2s}
+.scrim.on{opacity:1;pointer-events:auto}
+@media (max-width:900px){
+  .shop{grid-template-columns:minmax(0,1fr)}
+  .f-toggle{display:inline-flex}
+  .filters{position:fixed;z-index:90;left:0;top:0;bottom:0;width:min(340px,90vw);border-radius:0;overflow-y:auto;transform:translateX(-102%);transition:transform .25s;padding-top:max(14px,env(safe-area-inset-top,0px));padding-bottom:max(16px,env(safe-area-inset-bottom,0px));padding-left:max(16px,env(safe-area-inset-left,0px))}
+  .filters.open{transform:none}
+  .f-close{display:flex;justify-content:space-between;align-items:center;padding:6px 0}
+}
+.empty{padding:56px 16px;text-align:center;background:var(--surface);border:1px dashed var(--line);border-radius:var(--r)}
+.empty p{color:var(--muted);margin:8px 0 18px}
+
+/* product page */
+.pdp{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:36px;align-items:start}
+@media (max-width:860px){.pdp{grid-template-columns:minmax(0,1fr);gap:20px}}
+.gal-main{aspect-ratio:1/1;background:var(--surface-2);border-radius:var(--r);overflow:hidden;position:relative;border:1px solid var(--line)}
+.gal-th{display:flex;gap:10px;margin-top:10px}
+.gal-th button{width:76px;height:76px;border-radius:var(--r);overflow:hidden;background:var(--surface-2);border:2px solid transparent}
+.gal-th button.on{border-color:var(--accent)}
+.gal-th svg{width:100%;height:100%;display:block}
+.p-brand{display:flex;gap:8px;align-items:center;font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;font-weight:600}
+.pdp h1{font-size:clamp(30px,4.5vw,46px);margin:8px 0 10px;line-height:.98}
+.price{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin:14px 0 2px}
+.price b{font:900 44px/1 var(--display);letter-spacing:.02em}
+.price s{color:var(--muted)}
+.price em{font-style:normal;background:var(--accent);color:var(--on-accent);padding:3px 8px;border-radius:3px;font-weight:700;font-size:13px}
+.opt{margin-top:18px}
+.opt>h4{margin-bottom:8px;display:flex;gap:8px;align-items:baseline}
+.opt>h4 span{font:500 13px var(--body);color:var(--muted);text-transform:none;letter-spacing:0}
+.seg{display:flex;gap:8px;flex-wrap:wrap}
+.seg button{min-height:44px;padding:0 16px;border:1.5px solid var(--line);border-radius:var(--r);font-weight:600;background:var(--surface);text-align:left;line-height:1.2}
+.seg button small{display:block;color:var(--muted);font-weight:400;font-size:12px}
+.seg button:hover{border-color:var(--ink)}
+.seg button.on{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+.seg button[disabled]{opacity:.45;text-decoration:line-through;cursor:not-allowed}
+.seg .sw{display:inline-block;width:14px;height:14px;border-radius:50%;border:1px solid var(--line);vertical-align:-2px;margin-right:6px}
+.buy-type{display:grid;gap:8px}
+.buy-type label{display:flex;gap:10px;align-items:flex-start;border:1.5px solid var(--line);border-radius:var(--r);padding:10px 12px;background:var(--surface)}
+.buy-type label.on{border-color:var(--accent)}
+.buy-type small{display:block;color:var(--muted)}
+.qty{display:inline-flex;align-items:center;border:1.5px solid var(--line);border-radius:var(--r);background:var(--surface)}
+.qty button{width:40px;height:42px;display:grid;place-items:center}
+.qty button:hover{background:var(--surface-2)}
+.qty span{min-width:34px;text-align:center;font-weight:700}
+.buy{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px;align-items:center}
+.buy .btn{flex:1 1 150px}
+.icon-btn{width:44px;height:44px;border:1.5px solid var(--line);border-radius:var(--r);display:grid;place-items:center;background:var(--surface)}
+.icon-btn.on{color:var(--accent);border-color:var(--accent)}
+.pin{display:flex;gap:8px;margin-top:6px}
+.pin input{max-width:180px}
+.assure{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:20px;font-size:13px}
+.assure div{display:flex;gap:8px;align-items:center}
+.assure .ic{color:var(--accent)}
+.box{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px}
+.note{font-size:13px;color:var(--muted)}
+.subnav{position:sticky;top:calc(env(safe-area-inset-top,0px) + 100px);z-index:20;background:var(--bg);display:flex;gap:6px;overflow-x:auto;padding:10px 0;scrollbar-width:none;border-bottom:1px solid var(--line);margin-top:36px}
+.subnav::-webkit-scrollbar{display:none}
+.subnav button{white-space:nowrap;padding:7px 14px;border-radius:99px;font-weight:600;font-size:14px;background:var(--surface);border:1px solid var(--line)}
+.subnav button:hover{border-color:var(--ink)}
+.psec{padding-top:34px;scroll-margin-top:170px}
+.psec h2{font-size:32px;margin-bottom:14px}
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+@media (max-width:760px){.two{grid-template-columns:minmax(0,1fr)}}
+.ul{margin:0;padding-left:20px;display:grid;gap:6px}
+.facts{background:var(--surface);border:2px solid var(--ink);border-radius:4px;padding:10px 14px;max-width:420px}
+.facts h4{font-size:26px;border-bottom:8px solid var(--ink);padding-bottom:6px;margin-bottom:6px}
+.facts .ss{font-size:13px;border-bottom:3px solid var(--ink);padding-bottom:6px;margin-bottom:2px}
+.facts .row{display:flex;justify-content:space-between;gap:12px;padding:5px 0;border-bottom:1px solid var(--line);font-size:14px}
+.facts .row.sub{padding-left:14px;color:var(--muted)}
+.facts .row b{font-weight:700}
+table.t{width:100%;border-collapse:collapse;font-size:14px}
+.t th,.t td{padding:9px 10px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+.t th{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:600;background:var(--surface-2)}
+.tscroll{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);background:var(--surface)}
+.verify{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
+.verify input{flex:1 1 180px;text-transform:uppercase}
+.res{margin-top:10px;font-weight:600}
+.fbt{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.fbt .it{width:96px;text-align:center;font-size:12px;position:relative}
+.fbt .it .im{aspect-ratio:1;background:var(--surface-2);border-radius:var(--r);overflow:hidden;margin-bottom:4px}
+.fbt .it .im svg{width:100%;height:100%;display:block}
+.fbt .plus{font-size:24px;color:var(--muted)}
+.fbt-l label{display:flex;gap:8px;align-items:flex-start;padding:6px 0;font-size:14px}
+.rev-top{display:grid;grid-template-columns:200px minmax(0,1fr);gap:24px;align-items:center}
+@media (max-width:620px){.rev-top{grid-template-columns:minmax(0,1fr)}}
+.rev-top .big{font:900 64px/1 var(--display)}
+.bars{display:grid;gap:5px}
+.bar{display:grid;grid-template-columns:28px minmax(0,1fr) 38px;gap:8px;align-items:center;font-size:13px}
+.bar i{display:block;height:8px;border-radius:4px;background:var(--line);position:relative;overflow:hidden}
+.bar i b{position:absolute;inset:0 auto 0 0;background:var(--star)}
+.rev{padding:16px 0;border-bottom:1px solid var(--line);display:grid;gap:6px}
+.rev img{width:96px;height:96px;object-fit:cover;border-radius:var(--r)}
+.rev-h{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:13px;color:var(--muted)}
+.rev-h b{color:var(--ink)}
+.starpick{display:flex;gap:2px}
+.starpick button{font-size:26px;line-height:1;color:var(--line);padding:2px}
+.starpick button.on{color:var(--star)}
+.form-g{display:grid;gap:12px}
+.fld{display:grid;gap:5px}
+.fld>span{font-size:13px;font-weight:600}
+.fld .err{color:var(--bad);font-size:12px;font-weight:500;min-height:0}
+.fld.bad input,.fld.bad select{border-color:var(--bad)}
+.cols2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media (max-width:520px){.cols2{grid-template-columns:minmax(0,1fr)}}
+.qa{padding:12px 0;border-bottom:1px solid var(--line)}
+.qa b{display:block}
+.pdp-bar{display:none}
+@media (max-width:860px){
+  .pdp-bar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:40;background:var(--surface);border-top:1px solid var(--line);gap:12px;align-items:center;justify-content:space-between;padding:10px max(16px,env(safe-area-inset-right,0px)) max(10px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+  .pdp-bar b{font:900 26px/1 var(--display)}
+  body.has-bar{padding-bottom:72px}
+}
+
+/* drawers, modal, toast */
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(440px,100vw);background:var(--surface);z-index:90;display:flex;flex-direction:column;transform:translateX(102%);transition:transform .25s;border-left:1px solid var(--line);visibility:hidden}
+.drawer.open{transform:none;visibility:visible}
+.dr-h{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;padding-top:max(14px,env(safe-area-inset-top,0px));padding-right:max(16px,env(safe-area-inset-right,0px));border-bottom:1px solid var(--line)}
+.dr-b{flex:1;overflow-y:auto;padding:14px 16px;padding-right:max(16px,env(safe-area-inset-right,0px))}
+.dr-f{border-top:1px solid var(--line);padding:14px 16px max(14px,env(safe-area-inset-bottom,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:8px}
+.ship-bar{background:var(--surface-2);border-radius:var(--r);padding:10px 12px;font-size:13px;margin-bottom:12px}
+.ship-bar i{display:block;height:6px;border-radius:3px;background:var(--line);margin-top:8px;overflow:hidden}
+.ship-bar i b{display:block;height:100%;background:var(--good);transition:width .3s}
+.ln{display:grid;grid-template-columns:72px minmax(0,1fr);gap:12px;padding:12px 0;border-bottom:1px solid var(--line);list-style:none}
+.ln .im{width:72px;height:72px;background:var(--surface-2);border-radius:var(--r);overflow:hidden}
+.ln .im svg{width:100%;height:100%;display:block}
+.ln h5{margin:0;font:600 14px/1.3 var(--body)}
+.ln small{color:var(--muted);display:block}
+.ln .r{display:flex;justify-content:space-between;align-items:center;margin-top:6px;gap:8px}
+.ln .qty button{width:32px;height:32px}
+.ln .rm{color:var(--muted);font-size:12px;text-decoration:underline}
+ul.clean{list-style:none;margin:0;padding:0}
+.tot{display:grid;gap:6px;font-size:14px}
+.tot div{display:flex;justify-content:space-between;gap:10px}
+.tot .g{color:var(--good)}
+.tot .big{font:800 24px/1 var(--display);padding-top:8px;border-top:1px solid var(--line);letter-spacing:.02em}
+.cpn{display:flex;gap:8px;margin-top:10px}
+.cpn input{text-transform:uppercase}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.chips button{border:1px dashed var(--accent);color:var(--accent);padding:3px 10px;border-radius:99px;font-size:12px;font-weight:700;letter-spacing:.05em}
+.modal{position:fixed;inset:0;z-index:100;display:grid;place-items:center;padding:16px;background:rgba(5,9,25,.6)}
+.modal[hidden]{display:none}
+.modal>div{background:var(--surface);border-radius:var(--r);padding:28px;max-width:440px;width:100%;position:relative;max-height:90vh;overflow:auto}
+.modal .x{position:absolute;right:10px;top:10px;width:36px;height:36px;display:grid;place-items:center;border-radius:50%}
+.modal .x:hover{background:var(--surface-2)}
+#toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:120;display:grid;gap:8px;width:min(420px,calc(100vw - 32px));pointer-events:none}
+body.has-bar #toast{bottom:calc(84px + env(safe-area-inset-bottom,0px))}
+.toast{background:var(--ink);color:var(--bg);padding:12px 16px;border-radius:var(--r);font-weight:500;font-size:14px;box-shadow:0 8px 24px rgba(0,0,0,.3);animation:tin .2s}
+@keyframes tin{from{opacity:0;transform:translateY(8px)}}
+.cmpbar{position:fixed;left:0;right:0;bottom:0;z-index:45;background:var(--ink);color:var(--bg);display:flex;gap:12px;justify-content:center;align-items:center;padding:10px max(16px,env(safe-area-inset-right,0px)) max(10px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));flex-wrap:wrap}
+.cmpbar[hidden]{display:none}
+.cmpbar .btn{min-height:38px}
+.cmpbar .btn.ghost{color:var(--bg);border-color:rgba(128,128,128,.6)}
+
+/* chat */
+.fab{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:44;width:52px;height:52px;border-radius:50%;background:var(--accent);color:var(--on-accent);display:grid;place-items:center;box-shadow:0 6px 20px rgba(0,0,0,.3)}
+body.has-bar .fab{bottom:calc(84px + env(safe-area-inset-bottom,0px))}
+.chat{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(80px + env(safe-area-inset-bottom,0px));z-index:95;width:min(340px,calc(100vw - 32px));background:var(--surface);border:1px solid var(--line);border-radius:var(--r);box-shadow:0 16px 40px rgba(5,9,25,.35);display:none;flex-direction:column;max-height:70vh}
+.chat.open{display:flex}
+.chat-h{background:var(--band);color:var(--on-band);padding:12px 14px;border-radius:var(--r) var(--r) 0 0;display:flex;justify-content:space-between;align-items:center}
+.chat-b{padding:12px;overflow-y:auto;display:grid;gap:8px;align-content:start}
+.msg{padding:8px 12px;border-radius:10px;max-width:90%;font-size:14px}
+.msg.b{background:var(--surface-2)}
+.msg.u{background:var(--accent);color:var(--on-accent);justify-self:end}
+.qk{display:flex;gap:6px;flex-wrap:wrap;padding:0 12px 12px}
+.qk button{border:1px solid var(--line);border-radius:99px;padding:5px 11px;font-size:13px;font-weight:600}
+.qk button:hover{border-color:var(--accent);color:var(--accent)}
+
+/* checkout / account / misc pages */
+.co{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:28px;align-items:start;padding-bottom:56px}
+@media (max-width:960px){.co{grid-template-columns:minmax(0,1fr)}}
+.co-sum{position:sticky;top:calc(env(safe-area-inset-top,0px) + 120px)}
+@media (max-width:960px){.co-sum{position:static}}
+.step{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px;margin-bottom:14px}
+.step>h3{margin-bottom:14px;display:flex;gap:10px;align-items:center}
+.seg2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border:1.5px solid var(--line);border-radius:var(--r);overflow:hidden;margin-bottom:14px}
+.seg2 button{padding:10px;font-weight:600;background:var(--surface)}
+.seg2 button.on{background:var(--ink);color:var(--bg)}
+.demo{background:var(--surface-2);border-radius:var(--r);padding:10px 12px;font-size:13px;margin-top:10px}
+.demo b{letter-spacing:.2em;font-size:16px}
+.pay{display:grid;gap:8px}
+.pay>label{border:1.5px solid var(--line);border-radius:var(--r);padding:12px;display:grid;gap:10px}
+.pay>label.on{border-color:var(--accent)}
+.pay .hd{display:flex;gap:10px;align-items:center;font-weight:600;justify-content:space-between}
+.pay .hd span:first-child{display:flex;gap:10px;align-items:center}
+.pay .sub{display:grid;gap:10px}
+.pay[aria-disabled] label{opacity:.5}
+.ord-sum li{display:grid;grid-template-columns:48px minmax(0,1fr) auto;gap:10px;align-items:center;padding:8px 0;list-style:none;font-size:14px}
+.ord-sum .im{width:48px;height:48px;border-radius:4px;background:var(--surface-2);overflow:hidden}
+.ord-sum .im svg{width:100%;height:100%;display:block}
+.tabs{display:flex;gap:6px;overflow-x:auto;margin-bottom:18px;scrollbar-width:none}
+.tabs button{padding:8px 16px;border-radius:99px;font-weight:600;border:1px solid var(--line);background:var(--surface);white-space:nowrap}
+.tabs button.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.timeline{display:grid;gap:0;margin:16px 0}
+.timeline div{display:grid;grid-template-columns:28px minmax(0,1fr);gap:12px;padding-bottom:18px;position:relative}
+.timeline div::before{content:"";position:absolute;left:13px;top:26px;bottom:-2px;width:2px;background:var(--line)}
+.timeline div:last-child::before{display:none}
+.timeline i{width:28px;height:28px;border-radius:50%;border:2px solid var(--line);display:grid;place-items:center;background:var(--surface)}
+.timeline .done i{background:var(--good);border-color:var(--good);color:#fff}
+.timeline .done::before{background:var(--good)}
+.timeline small{color:var(--muted);display:block}
+.page{padding-block:30px 56px}
+.page .narrow{max-width:780px}
+.prose{display:grid;gap:14px}
+.prose h2{font-size:30px;margin-top:10px}
+.prose h3{font-size:22px;margin-top:6px}
+.prose ul{margin:0;padding-left:22px;display:grid;gap:6px}
+.faq details{border-bottom:1px solid var(--line);padding:14px 0}
+.faq summary{font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:12px;align-items:center}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-size:22px;line-height:1;color:var(--accent)}
+.faq details[open] summary::after{content:"–"}
+.faq details p{margin-top:8px;color:var(--muted)}
+.blog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
+.post{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column}
+.post:hover{border-color:var(--ink)}
+.post .im{height:130px;background:var(--band);color:var(--on-band);padding:16px;display:flex;align-items:flex-end;font:900 28px/.95 var(--display);text-transform:uppercase}
+.post .b{padding:14px;display:grid;gap:6px}
+.post small{color:var(--muted)}
+.q-opt{display:grid;gap:8px;margin-top:14px}
+.q-opt button{text-align:left;border:1.5px solid var(--line);border-radius:var(--r);padding:12px 14px;font-weight:600;background:var(--surface)}
+.q-opt button:hover{border-color:var(--accent)}
+.prog{height:6px;border-radius:3px;background:var(--line);overflow:hidden;margin-bottom:18px}
+.prog b{display:block;height:100%;background:var(--accent)}
+.rec{display:grid;grid-template-columns:72px minmax(0,1fr) auto;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}
+.rec .im{width:72px;height:72px;background:var(--surface-2);border-radius:var(--r);overflow:hidden}
+.rec .im svg{width:100%;height:100%;display:block}
+@media (max-width:520px){.rec{grid-template-columns:56px minmax(0,1fr)}.rec .im{width:56px;height:56px}.rec>b{grid-column:2}}
+.cmp-t th:first-child,.cmp-t td:first-child{position:sticky;left:0;background:var(--surface);z-index:1;min-width:120px}
+.cmp-t td,.cmp-t th{min-width:170px}
+.cmp-t .im{width:120px;aspect-ratio:1;background:var(--surface-2);border-radius:var(--r);overflow:hidden}
+.cmp-t .im svg{width:100%;height:100%;display:block}
+.foot{background:var(--band);color:var(--on-band);padding-block:44px 28px;margin-top:20px}
+.foot-g{display:grid;grid-template-columns:1.4fr repeat(3,minmax(0,1fr));gap:28px}
+@media (max-width:820px){.foot-g{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:480px){.foot-g{grid-template-columns:minmax(0,1fr)}}
+.foot h4{color:var(--on-band);margin-bottom:12px}
+.foot a,.foot p{color:var(--band-muted);font-size:14px}
+.foot a:hover{color:var(--on-band)}
+.foot ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.foot .fine{border-top:1px solid rgba(255,255,255,.14);margin-top:28px;padding-top:18px;font-size:12px;color:var(--band-muted);display:grid;gap:8px}
+.ok-ic{width:64px;height:64px;border-radius:50%;background:var(--good);color:#fff;display:grid;place-items:center;margin-bottom:14px}
+.spin{width:44px;height:44px;border:4px solid var(--line);border-top-color:var(--accent);border-radius:50%;animation:sp .8s linear infinite;margin:0 auto 14px}
+@keyframes sp{to{transform:rotate(360deg)}}
+</style>
+<style>html{color-scheme:light dark}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+
+</head>
+<body>
+
+<div class="ann"><div class="wrap ann-in"><span>Free shipping above ₹999</span><span aria-hidden="true">·</span><span>Code <b>WELCOME10</b> for 10% off your first order</span></div></div>
+<header class="hdr" id="hdr">
+  <div class="wrap hdr-in">
+    <a class="logo" href="#home" aria-label="Forge Nutrition home">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="2" y="10" width="4" height="12" rx="1.5"/><rect x="7" y="7" width="4" height="18" rx="1.5"/><rect x="11" y="14" width="10" height="4"/><rect x="21" y="7" width="4" height="18" rx="1.5"/><rect x="26" y="10" width="4" height="12" rx="1.5"/></svg>
+      <div><span>FORGE</span><small>NUTRITION</small></div>
+    </a>
+    <form class="search" id="sf" role="search" autocomplete="off">
+      <input id="q" type="search" placeholder="Search whey, creatine, shaker…" aria-label="Search products">
+      <button type="submit" aria-label="Search" id="sbtn"></button>
+      <div class="sugg" id="sugg" hidden></div>
+    </form>
+    <nav class="tools" aria-label="Account and cart">
+      <a class="tool" href="#account" aria-label="Account" id="t-acc"></a>
+      <a class="tool" href="#wishlist" aria-label="Wishlist" id="t-wish"></a>
+      <a class="tool" href="#compare" aria-label="Compare" id="t-cmp"></a>
+      <button class="tool" data-act="cart" aria-label="Open cart" id="t-cart"></button>
+    </nav>
+  </div>
+  <nav class="wrap cats" id="cats" aria-label="Categories"></nav>
+</header>
+<main id="view"></main>
+<footer class="foot" id="foot"></footer>
+
+<div class="scrim" id="scrim" data-act="closeall"></div>
+<aside class="drawer" id="cartd" aria-label="Shopping cart" aria-hidden="true"></aside>
+<div class="modal" id="modal" hidden></div>
+<div class="cmpbar" id="cmpbar" hidden></div>
+<button class="fab" data-act="chat" aria-label="Chat support" id="fab"></button>
+<section class="chat" id="chat" aria-label="Support chat"></section>
+<div id="toast" aria-live="polite"></div>
+
+<script>
+/* ============ CONFIG (edit these for your own store) ============ */
+const STORE = 'Forge Nutrition';
+const CFG = {
+  freeShip: 999, shipFee: 79, codFee: 49, codMax: 5000, subDisc: 10,
+  fssai: 'XXXXXXXXXXXXXX', gst: 'XXXXXXXXXXXXXXX',
+  email: 'support@yourstore.com', phone: '+91 00000 00000',
+  wa: '' /* WhatsApp number with country code, e.g. 919876543210 */
+};
+const COUPONS = {
+  WELCOME10: { t: 'pct', v: 10, max: 300, min: 499, label: '10% off up to ₹300, orders above ₹499' },
+  STACK15: { t: 'pct', v: 15, max: 600, min: 2999, label: '15% off up to ₹600, orders above ₹2,999' },
+  FREESHIP: { t: 'ship', min: 0, label: 'Free shipping on any order' }
+};
+
+/* ============ helpers ============ */
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const inr = n => '₹' + Math.round(n).toLocaleString('en-IN');
+const H = s => [...String(s)].reduce((a, c) => (a * 31 + c.charCodeAt(0)) >>> 0, 7);
+const slug = s => String(s).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+const fmtDate = d => new Date(d).toLocaleDateString('en-IN', { weekday: 'short', day: 'numeric', month: 'short' });
+const fmtLong = d => new Date(d).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
+const DAY = 864e5;
+
+const IC = {
+  search: '<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>',
+  user: '<circle cx="12" cy="8" r="4"/><path d="M4 21c1-4.500 4.500-6 8-6s7 1.500 8 6"/>',
+  heart: '<path d="M12 20s-7.500-4.600-9.300-9.600C1.500 7.200 3.700 4 7 4c2 0 3.600 1 5 3 1.400-2 3-3 5-3 3.300 0 5.500 3.200 4.300 6.400C19.500 15.400 12 20 12 20z"/>',
+  cart: '<path d="M3 4h2.500l2.200 11h10.300l2-8H7"/><circle cx="9.500" cy="19.500" r="1.500"/><circle cx="17" cy="19.500" r="1.500"/>',
+  x: '<path d="M6 6l12 12M18 6 6 18"/>',
+  check: '<path d="m5 12.500 4.500 4.500L19 7.500"/>',
+  truck: '<path d="M2 6h11v10H2zM13 9h4.500l3 3.500V16H13z"/><circle cx="7" cy="17.500" r="1.800"/><circle cx="17" cy="17.500" r="1.800"/>',
+  shield: '<path d="M12 3l8 3v6c0 4.500-3.200 7.800-8 9-4.800-1.200-8-4.500-8-9V6z"/><path d="m8.500 12 2.500 2.500 4.500-5"/>',
+  flask: '<path d="M9 3h6M10 3v6l-5.500 9.500A1.500 1.500 0 0 0 5.800 21h12.400a1.500 1.500 0 0 0 1.300-2.500L14 9V3"/><path d="M7.500 15h9"/>',
+  refresh: '<path d="M20 11a8 8 0 0 0-14.500-4M4 5v4h4M4 13a8 8 0 0 0 14.500 4M20 19v-4h-4"/>',
+  chat: '<path d="M4 5h16v11H9l-5 4z"/>',
+  compare: '<path d="M7 4v16M3 8l4-4 4 4M17 20V4M13 16l4 4 4-4"/>',
+  filter: '<path d="M4 6h16M7 12h10M10 18h4"/>',
+  chev: '<path d="m9 6 6 6-6 6"/>',
+  plus: '<path d="M12 5v14M5 12h14"/>',
+  minus: '<path d="M5 12h14"/>',
+  lock: '<rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/>',
+  box: '<path d="M3 7.500 12 3l9 4.500v9L12 21l-9-4.500z"/><path d="M3 7.500 12 12l9-4.500M12 12v9"/>',
+  copy: '<rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/>',
+  pin: '<path d="M12 21s7-6.200 7-11.500A7 7 0 0 0 5 9.500C5 14.800 12 21 12 21z"/><circle cx="12" cy="9.500" r="2.500"/>'
+};
+const ic = (n, s = 20, fill) => `<svg class="ic" width="${s}" height="${s}" viewBox="0 0 24 24" fill="${fill ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${IC[n]}</svg>`;
+const stars = r => `<span class="stars" style="--r:${(r / 5 * 100).toFixed(0)}%" role="img" aria-label="${r.toFixed(1)} out of 5"></span>`;
+const dietDot = d => `<span class="dot ${d === 'nonveg' ? 'nv' : ''}" title="${d === 'nonveg' ? 'Non-vegetarian' : 'Vegetarian'}"></span>`;
+
+/* ============ catalogue (SAMPLE DATA: replace with your real products, prices, lab reports) ============ */
+const CATS = [['protein', 'Protein'], ['creatine', 'Creatine'], ['preworkout', 'Pre-Workout'], ['aminos', 'BCAA & EAA'], ['gainers', 'Mass Gainers'], ['vitamins', 'Vitamins & Health'], ['fatburners', 'Fat Burners'], ['accessories', 'Accessories'], ['combos', 'Combos']];
+const CATN = Object.fromEntries(CATS);
+const GOALS = {
+  muscle: ['Muscle gain', 'Protein, creatine and gainers to build size and strength.'],
+  weight: ['Weight loss', 'Lean protein and support products to pair with a calorie deficit.'],
+  energy: ['Energy', 'Pre-workouts and daily-health picks for training days.'],
+  recovery: ['Recovery', 'Aminos, protein and basics to bounce back between sessions.']
+};
+const BC = { 'Forge': '#c2410c', 'Peak Lab': '#0b7a86', 'Rootwell': '#2f7d3a', 'Volt': '#6a2bd9', 'Aero Gear': '#243a73' };
+const FLC = { Chocolate: '#5a3727', Vanilla: '#e6d3a0', Strawberry: '#e0577a', 'Cookies & Cream': '#8a8a96', Coffee: '#7a5230', Unflavoured: '#c5c9d2', 'Blue Raspberry': '#2f7be0', 'Fruit Punch': '#d8323f', Watermelon: '#e8506a', Orange: '#f28a1b', 'Lemon Lime': '#a5cc2a', Banana: '#f0d54a', 'Green Apple': '#7cc144', Mango: '#f5a623', Navy: '#1f3a8a', Black: '#1b1f2a', Red: '#d8323f' };
+const Z = (l, price, mrp, sv, w) => ({ l, price, mrp, sv, w });
+const W_STD = 'Keep out of reach of children. Not for persons under 18. Consult your doctor before use if you are pregnant, nursing, taking medication or have a medical condition. Not a substitute for a varied diet. Store in a cool, dry place away from sunlight.';
+const W_CAF = 'Contains caffeine. Do not exceed the serving size. Avoid combining with other caffeine sources and do not take within 6 hours of bedtime. ' + W_STD;
+const MICRO = [['Lead', '≤ 0.5 mg/kg', '< 0.1 mg/kg'], ['Arsenic', '≤ 1.0 mg/kg', '< 0.1 mg/kg'], ['Total plate count', '≤ 10,000 cfu/g', '< 1,000 cfu/g'], ['Yeast & mould', '≤ 100 cfu/g', '< 10 cfu/g'], ['Salmonella', 'Absent in 25 g', 'Absent']];
+
+const P = [
+  { id: 'forge-whey', name: 'Forge Whey Protein Concentrate', brand: 'Forge', cat: 'protein', type: 'Whey Concentrate', short: 'WHEY|CONCENTRATE', form: 'tub', diet: 'veg',
+    sizes: [Z('1 kg', 2199, 2999, 33, 1000), Z('2 kg', 4099, 5599, 66, 2000), Z('4 kg', 7799, 10499, 133, 4000)], opt: 'Flavour', flavs: ['Chocolate', 'Vanilla', 'Strawberry', 'Cookies & Cream', 'Coffee'],
+    rating: 4.5, rc: 12480, tags: ['bestseller'], goals: ['muscle', 'recovery'], stock: 48,
+    desc: 'A balanced everyday whey concentrate. 24 g of protein per scoop with naturally occurring BCAAs, and it mixes in a shaker without clumping.',
+    pts: ['24 g protein in each 30 g scoop', '130 kcal and 2 g sugar per serving', 'Instantised, mixes in water or milk', 'Every batch tested for protein content and contaminants'],
+    ss: '30 g (1 scoop)', n: [['Energy', '130 kcal'], ['Protein', '24 g'], ['Carbohydrate', '3 g'], ['of which sugars', '2 g'], ['Fat', '1.8 g'], ['of which saturated', '1.1 g'], ['BCAA (naturally occurring)', '5.5 g'], ['Sodium', '60 mg']],
+    ing: 'Whey protein concentrate, flavour, emulsifier (soy lecithin 322), thickener (xanthan gum 415), sweetener (sucralose 955). Contains milk and soy.',
+    how: 'Mix 1 scoop (30 g) with 150–200 ml of cold water or milk. Take after training or between meals to reach your daily protein target. 1–2 servings per day.',
+    warn: W_STD, key: ['Protein per serving', '24 g'], lab: [['Protein (per 100 g)', '≥ 78 g', '80.4 g']], fbt: ['forge-creatine', 'aero-shaker'] },
+  { id: 'peak-iso', name: 'Peak Lab Whey Isolate 90', brand: 'Peak Lab', cat: 'protein', type: 'Whey Isolate', short: 'WHEY|ISOLATE 90', form: 'tub', diet: 'veg',
+    sizes: [Z('1 kg', 3299, 4299, 33, 1000), Z('2 kg', 6199, 7999, 66, 2000)], opt: 'Flavour', flavs: ['Chocolate', 'Vanilla', 'Coffee'],
+    rating: 4.6, rc: 6210, tags: ['bestseller'], goals: ['muscle', 'weight', 'recovery'], stock: 30,
+    desc: 'Cross-flow filtered isolate with 27 g of protein per scoop and under 1 g of sugar. A good pick when you are cutting calories or find concentrate heavy on the stomach.',
+    pts: ['27 g protein per 30 g scoop', 'Under 1 g sugar and under 1 g fat', 'Lower lactose than concentrate', 'Fast-mixing, light texture'],
+    ss: '30 g (1 scoop)', n: [['Energy', '115 kcal'], ['Protein', '27 g'], ['Carbohydrate', '1.5 g'], ['of which sugars', '0.5 g'], ['Fat', '0.6 g'], ['BCAA (naturally occurring)', '6.2 g'], ['Sodium', '75 mg']],
+    ing: 'Whey protein isolate, flavour, emulsifier (sunflower lecithin 322), sweetener (sucralose 955). Contains milk.',
+    how: 'Mix 1 scoop (30 g) with 200 ml cold water. Take after training or any time you need to fill a protein gap. 1–2 servings per day.',
+    warn: W_STD, key: ['Protein per serving', '27 g'], lab: [['Protein (per 100 g)', '≥ 88 g', '90.2 g']], fbt: ['peak-eaa', 'aero-shaker'] },
+  { id: 'root-plant', name: 'Rootwell Plant Protein (Pea + Rice)', brand: 'Rootwell', cat: 'protein', type: 'Plant Protein', short: 'PLANT|PROTEIN', form: 'pouch', diet: 'veg', vegan: true,
+    sizes: [Z('1 kg', 2499, 3299, 33, 1000), Z('2 kg', 4599, 5999, 66, 2000)], opt: 'Flavour', flavs: ['Chocolate', 'Vanilla', 'Unflavoured'],
+    rating: 4.2, rc: 1840, tags: ['new'], goals: ['muscle', 'weight'], stock: 22,
+    desc: 'Pea and brown rice protein blended for a complete amino acid profile. Dairy-free, soy-free and suitable for vegans.',
+    pts: ['24 g plant protein per 32 g scoop', 'Dairy-free, soy-free, vegan', 'Pea + rice blend for a fuller amino profile', 'Smooth texture, mild taste'],
+    ss: '32 g (1 scoop)', n: [['Energy', '125 kcal'], ['Protein', '24 g'], ['Carbohydrate', '3 g'], ['of which sugars', '<1 g'], ['Fat', '2 g'], ['Fibre', '2 g'], ['Iron', '4 mg']],
+    ing: 'Pea protein isolate, brown rice protein, flavour, thickener (xanthan gum 415), sweetener (stevia 960).',
+    how: 'Mix 1 scoop (32 g) with 250 ml cold water or plant milk. 1–2 servings per day.',
+    warn: W_STD, key: ['Protein per serving', '24 g'], lab: [['Protein (per 100 g)', '≥ 72 g', '75.0 g']], fbt: ['root-d3k2', 'aero-shaker'] },
+  { id: 'peak-egg', name: 'Peak Lab Egg White Protein', brand: 'Peak Lab', cat: 'protein', type: 'Egg Protein', short: 'EGG WHITE|PROTEIN', form: 'tub', diet: 'nonveg',
+    sizes: [Z('500 g', 1999, 2599, 17, 500), Z('1 kg', 3699, 4799, 33, 1000)], opt: 'Flavour', flavs: ['Vanilla', 'Chocolate'],
+    rating: 4.0, rc: 760, tags: [], goals: ['muscle', 'weight'], stock: 14,
+    desc: 'Spray-dried egg white protein with almost no fat or carbohydrate. A dairy-free option for people who tolerate eggs.',
+    pts: ['24 g protein per 30 g scoop', 'Dairy-free', 'Almost no fat or carbohydrate', 'Contains egg: not vegetarian'],
+    ss: '30 g (1 scoop)', n: [['Energy', '112 kcal'], ['Protein', '24 g'], ['Carbohydrate', '2 g'], ['Fat', '0.2 g'], ['Sodium', '210 mg']],
+    ing: 'Egg white protein, flavour, thickener (xanthan gum 415), sweetener (sucralose 955). Contains egg.',
+    how: 'Mix 1 scoop (30 g) with 200 ml cold water or blend into a smoothie. Do not use if you are allergic to eggs.',
+    warn: W_STD + ' Contains egg.', key: ['Protein per serving', '24 g'], lab: [['Protein (per 100 g)', '≥ 78 g', '80.1 g']], fbt: ['forge-creatine', 'aero-shaker'] },
+  { id: 'forge-creatine', name: 'Forge Creatine Monohydrate', brand: 'Forge', cat: 'creatine', type: 'Creatine Monohydrate', short: 'CREATINE|MONOHYDRATE', form: 'tub', diet: 'veg',
+    sizes: [Z('100 g', 449, 649, 33, 100), Z('250 g', 899, 1299, 83, 250), Z('500 g', 1549, 2199, 166, 500)], opt: 'Flavour', flavs: ['Unflavoured', 'Orange'],
+    rating: 4.6, rc: 9320, tags: ['bestseller'], goals: ['muscle', 'energy'], stock: 60,
+    desc: 'Pure creatine monohydrate, the most studied form of creatine. 3 g per serving, no fillers in the unflavoured version.',
+    pts: ['3 g creatine monohydrate per serving', 'Unflavoured option has a single ingredient', 'Dissolves best in warm water or juice', 'Daily use matters more than timing'],
+    ss: '3 g (1 level scoop)', n: [['Energy', '0 kcal'], ['Creatine monohydrate', '3 g'], ['Carbohydrate', '0 g'], ['Fat', '0 g']],
+    ing: 'Creatine monohydrate. Orange variant: creatine monohydrate, citric acid, flavour, sweetener (sucralose 955).',
+    how: 'Take 3–5 g (1 level scoop) once a day with water or juice, on training and rest days. A loading phase is optional. Drink water through the day.',
+    warn: W_STD + ' If you have a kidney condition, speak to your doctor first.', key: ['Creatine per serving', '3 g'], lab: [['Creatine monohydrate', '≥ 99.5%', '99.9%']], fbt: ['forge-whey', 'aero-shaker'] },
+  { id: 'peak-creatine', name: 'Peak Lab Micronized Creatine', brand: 'Peak Lab', cat: 'creatine', type: 'Micronized Creatine', short: 'MICRONIZED|CREATINE', form: 'jar', diet: 'veg',
+    sizes: [Z('250 g', 1199, 1699, 83, 250), Z('500 g', 2099, 2899, 166, 500)], opt: 'Flavour', flavs: ['Unflavoured'],
+    rating: 4.4, rc: 2150, tags: ['new'], goals: ['muscle', 'energy'], stock: 25,
+    desc: 'Micronized creatine monohydrate with smaller particles that dissolve faster and settle less at the bottom of the glass.',
+    pts: ['3 g per serving', 'Finer particle size for easy mixing', 'Single ingredient', 'Resealable jar with scoop'],
+    ss: '3 g (1 level scoop)', n: [['Energy', '0 kcal'], ['Creatine monohydrate', '3 g'], ['Carbohydrate', '0 g'], ['Fat', '0 g']],
+    ing: 'Micronized creatine monohydrate.', how: 'Take 3–5 g once daily with water or juice.',
+    warn: W_STD + ' If you have a kidney condition, speak to your doctor first.', key: ['Creatine per serving', '3 g'], lab: [['Creatine monohydrate', '≥ 99.5%', '99.9%']], fbt: ['peak-iso', 'aero-shaker'] },
+  { id: 'volt-ignite', name: 'Volt Ignite Pre-Workout', brand: 'Volt', cat: 'preworkout', type: 'Pre-Workout', short: 'IGNITE|PRE-WORKOUT', form: 'tub', diet: 'veg',
+    sizes: [Z('300 g', 1799, 2499, 30, 300)], opt: 'Flavour', flavs: ['Blue Raspberry', 'Fruit Punch', 'Watermelon', 'Green Apple'],
+    rating: 4.3, rc: 3870, tags: ['bestseller'], goals: ['energy', 'muscle'], stock: 35,
+    desc: 'A high-stimulant pre-workout with 150 mg caffeine, 6 g citrulline malate and 2 g beta-alanine per scoop. Start with half a scoop to assess tolerance.',
+    pts: ['150 mg caffeine per 10 g scoop', '6 g citrulline malate', '2 g beta-alanine (a harmless tingle is normal)', 'Not for use late in the evening'],
+    ss: '10 g (1 scoop)', n: [['Energy', '15 kcal'], ['Citrulline malate', '6 g'], ['Beta-alanine', '2 g'], ['Taurine', '1 g'], ['Caffeine anhydrous', '150 mg'], ['Sodium', '90 mg']],
+    ing: 'Citrulline malate, beta-alanine, taurine, caffeine anhydrous, acidity regulator (330), flavour, colour (133), sweetener (955, 950).',
+    how: 'Mix 1 scoop (10 g) with 250 ml cold water 20–30 minutes before training. Assess tolerance with half a scoop first. Maximum 1 serving a day.',
+    warn: W_CAF, key: ['Caffeine per serving', '150 mg'], lab: [['Caffeine (per serving)', '150 mg', '152 mg'], ['Citrulline malate (per serving)', '6 g', '6.1 g']], fbt: ['peak-eaa', 'aero-shaker'] },
+  { id: 'volt-pump', name: 'Volt Pump Stim-Free Pre-Workout', brand: 'Volt', cat: 'preworkout', type: 'Stim-Free Pre-Workout', short: 'PUMP|STIM-FREE', form: 'tub', diet: 'veg',
+    sizes: [Z('250 g', 1599, 2199, 25, 250)], opt: 'Flavour', flavs: ['Orange', 'Lemon Lime'],
+    rating: 4.2, rc: 640, tags: ['new'], goals: ['energy', 'muscle'], stock: 0,
+    desc: 'Caffeine-free pre-workout with citrulline, betaine and electrolytes for evening sessions or anyone avoiding stimulants.',
+    pts: ['Zero caffeine', '6 g citrulline malate', '2.5 g betaine', 'Electrolytes for hydration'],
+    ss: '10 g (1 scoop)', n: [['Energy', '10 kcal'], ['Citrulline malate', '6 g'], ['Betaine', '2.5 g'], ['Taurine', '1 g'], ['Sodium', '120 mg'], ['Potassium', '80 mg']],
+    ing: 'Citrulline malate, betaine anhydrous, taurine, electrolyte blend, acidity regulator (330), flavour, sweetener (955).',
+    how: 'Mix 1 scoop (10 g) with 250 ml cold water 20–30 minutes before training.', warn: W_STD, key: ['Citrulline per serving', '6 g'],
+    lab: [['Citrulline malate (per serving)', '6 g', '6.0 g']], fbt: ['peak-eaa', 'aero-shaker'] },
+  { id: 'peak-eaa', name: 'Peak Lab EAA + Hydration', brand: 'Peak Lab', cat: 'aminos', type: 'EAA', short: 'EAA|HYDRATION', form: 'tub', diet: 'veg', vegan: true,
+    sizes: [Z('400 g', 1499, 2099, 40, 400)], opt: 'Flavour', flavs: ['Mango', 'Watermelon', 'Lemon Lime'],
+    rating: 4.4, rc: 2980, tags: ['bestseller'], goals: ['recovery', 'weight'], stock: 40,
+    desc: 'All nine essential amino acids with added electrolytes. Light to sip through a training session, with no sugar.',
+    pts: ['All 9 essential amino acids', '5 g leucine per serving', 'Added sodium and potassium', 'No sugar, about 20 kcal'],
+    ss: '10 g (1 scoop)', n: [['Energy', '20 kcal'], ['Total EAA', '8 g'], ['L-Leucine', '3 g'], ['L-Isoleucine', '1.5 g'], ['L-Valine', '1.5 g'], ['Sodium', '60 mg'], ['Potassium', '50 mg']],
+    ing: 'L-leucine, L-lysine HCl, L-valine, L-isoleucine, L-threonine, L-phenylalanine, L-methionine, L-histidine, L-tryptophan, electrolytes, flavour, sweetener (955).',
+    how: 'Mix 1 scoop (10 g) in 300–500 ml water. Sip before or during training. 1–2 servings per day.', warn: W_STD, key: ['EAA per serving', '8 g'],
+    lab: [['Total EAA (per serving)', '≥ 7.5 g', '8.0 g']], fbt: ['peak-iso', 'aero-shaker'] },
+  { id: 'forge-bcaa', name: 'Forge BCAA 2:1:1', brand: 'Forge', cat: 'aminos', type: 'BCAA', short: 'BCAA|2:1:1', form: 'jar', diet: 'veg', vegan: true,
+    sizes: [Z('250 g', 999, 1499, 35, 250)], opt: 'Flavour', flavs: ['Fruit Punch', 'Green Apple', 'Orange'],
+    rating: 4.1, rc: 1520, tags: [], goals: ['recovery'], stock: 26,
+    desc: 'Fermentation-derived BCAAs in the classic 2:1:1 ratio. A budget way to add leucine around training if your protein intake is already covered.',
+    pts: ['5 g BCAA per 7 g serving', 'Leucine : isoleucine : valine at 2:1:1', 'Fermentation-derived, vegan', 'Light, fruity taste'],
+    ss: '7 g (1 scoop)', n: [['Energy', '10 kcal'], ['BCAA', '5 g'], ['L-Leucine', '2.5 g'], ['L-Isoleucine', '1.25 g'], ['L-Valine', '1.25 g']],
+    ing: 'L-leucine, L-isoleucine, L-valine, acidity regulator (330), flavour, sweetener (955).',
+    how: 'Mix 1 scoop (7 g) in 250–300 ml water. Take before or during training.', warn: W_STD, key: ['BCAA per serving', '5 g'],
+    lab: [['BCAA (per serving)', '≥ 4.8 g', '5.0 g']], fbt: ['forge-whey', 'aero-shaker'] },
+  { id: 'forge-mass', name: 'Forge Mass Gainer 3:1', brand: 'Forge', cat: 'gainers', type: 'Mass Gainer', short: 'MASS|GAINER 3:1', form: 'pouch', diet: 'veg',
+    sizes: [Z('3 kg', 2899, 3999, 30, 3000), Z('6 kg', 5399, 7499, 60, 6000)], opt: 'Flavour', flavs: ['Chocolate', 'Banana', 'Vanilla'],
+    rating: 4.2, rc: 4410, tags: ['bestseller'], goals: ['muscle'], stock: 33,
+    desc: 'A calorie-dense gainer with a 3:1 carbohydrate to protein ratio for people who struggle to eat enough. About 375 kcal per 100 g serving.',
+    pts: ['375 kcal and 22 g protein per serving', 'Complex carbohydrates plus whey', 'Use to add calories, not to replace meals', 'Mix with milk for extra calories'],
+    ss: '100 g (about 3 scoops)', n: [['Energy', '375 kcal'], ['Protein', '22 g'], ['Carbohydrate', '66 g'], ['of which sugars', '8 g'], ['Fat', '3 g'], ['Fibre', '2 g']],
+    ing: 'Maltodextrin, whey protein concentrate, oat flour, milk solids, flavour, thickener (415), sweetener (955). Contains milk and gluten (oats).',
+    how: 'Mix 100 g (about 3 scoops) with 400 ml cold water or milk. Take once a day between meals or after training.', warn: W_STD, key: ['Protein per serving', '22 g'],
+    lab: [['Protein (per 100 g)', '≥ 20 g', '22.4 g']], fbt: ['forge-creatine', 'aero-shaker'] },
+  { id: 'peak-lean', name: 'Peak Lab Lean Gainer 2:1', brand: 'Peak Lab', cat: 'gainers', type: 'Lean Gainer', short: 'LEAN|GAINER 2:1', form: 'pouch', diet: 'veg',
+    sizes: [Z('2 kg', 2499, 3299, 20, 2000)], opt: 'Flavour', flavs: ['Chocolate', 'Coffee'],
+    rating: 4.3, rc: 1190, tags: ['new'], goals: ['muscle'], stock: 19,
+    desc: 'A leaner gainer with a 2:1 ratio, 30 g of protein and less sugar than a standard mass gainer.',
+    pts: ['30 g protein, 5 g fat per serving', '2:1 carbohydrate to protein', 'Lower sugar than classic gainers', 'Whey isolate and concentrate blend'],
+    ss: '100 g (about 3 scoops)', n: [['Energy', '375 kcal'], ['Protein', '30 g'], ['Carbohydrate', '52 g'], ['of which sugars', '5 g'], ['Fat', '5 g'], ['Fibre', '3 g']],
+    ing: 'Oat flour, whey protein concentrate, whey protein isolate, maltodextrin, flavour, thickener (415), sweetener (955). Contains milk and gluten (oats).',
+    how: 'Mix 100 g with 400 ml cold water or milk once a day.', warn: W_STD, key: ['Protein per serving', '30 g'],
+    lab: [['Protein (per 100 g)', '≥ 28 g', '30.2 g']], fbt: ['forge-creatine', 'aero-shaker'] },
+  { id: 'forge-multi', name: 'Forge Daily Multivitamin', brand: 'Forge', cat: 'vitamins', type: 'Multivitamin', short: 'DAILY|MULTIVITAMIN', form: 'jar', diet: 'veg',
+    sizes: [Z('60 tablets', 549, 799, 60, null), Z('120 tablets', 949, 1399, 120, null)], opt: 'Flavour', flavs: ['Unflavoured'],
+    rating: 4.3, rc: 5230, tags: [], goals: ['energy', 'recovery', 'weight'], stock: 70,
+    desc: 'A once-a-day multivitamin and mineral tablet to cover gaps in a busy diet.',
+    pts: ['One tablet a day', '23 vitamins and minerals', 'Vegetarian tablets', 'Take with a meal'],
+    ss: '1 tablet', n: [['Vitamin A', '800 µg'], ['Vitamin C', '80 mg'], ['Vitamin D3', '25 µg (1000 IU)'], ['Vitamin E', '12 mg'], ['Vitamin B12', '2.5 µg'], ['Zinc', '10 mg'], ['Magnesium', '100 mg']],
+    ing: 'Vitamins and minerals blend, microcrystalline cellulose, anti-caking agent (470), coating agent (464).',
+    how: 'Take 1 tablet daily with a meal.', warn: W_STD, key: ['Per serving', '1 tablet'],
+    lab: [['Vitamin C (per tablet)', '80 mg', '84 mg']], fbt: ['peak-omega', 'forge-whey'] },
+  { id: 'root-d3k2', name: 'Rootwell Vitamin D3 + K2', brand: 'Rootwell', cat: 'vitamins', type: 'Vitamin D3 + K2', short: 'VITAMIN|D3 + K2', form: 'bottle', diet: 'veg', vegan: true,
+    sizes: [Z('60 capsules', 649, 899, 60, null)], opt: 'Flavour', flavs: ['Unflavoured'],
+    rating: 4.5, rc: 2640, tags: ['new'], goals: ['recovery'], stock: 44,
+    desc: 'Plant-derived vitamin D3 (2000 IU) with vitamin K2 as MK-7 in one capsule.',
+    pts: ['2000 IU vitamin D3 per capsule', '90 µg vitamin K2 (MK-7)', 'Vegan capsules', 'One capsule a day with a meal'],
+    ss: '1 capsule', n: [['Vitamin D3', '50 µg (2000 IU)'], ['Vitamin K2 (MK-7)', '90 µg']],
+    ing: 'Vitamin D3 (from lichen), vitamin K2 (MK-7), medium-chain triglycerides, hydroxypropyl methylcellulose capsule.',
+    how: 'Take 1 capsule daily with a meal that contains fat.', warn: W_STD + ' Check with your doctor if you take blood thinners.', key: ['Vitamin D3', '2000 IU'],
+    lab: [['Vitamin D3 (per capsule)', '50 µg', '52 µg']], fbt: ['peak-omega', 'forge-multi'] },
+  { id: 'peak-omega', name: 'Peak Lab Omega-3 Fish Oil', brand: 'Peak Lab', cat: 'vitamins', type: 'Omega-3', short: 'OMEGA-3|FISH OIL', form: 'bottle', diet: 'nonveg',
+    sizes: [Z('60 softgels', 799, 1199, 60, null), Z('120 softgels', 1449, 2099, 120, null)], opt: 'Flavour', flavs: ['Unflavoured'],
+    rating: 4.4, rc: 3350, tags: [], goals: ['recovery'], stock: 52,
+    desc: 'Fish oil softgels with 360 mg EPA and 240 mg DHA per capsule, purified to remove heavy metals.',
+    pts: ['360 mg EPA + 240 mg DHA per softgel', 'Enteric-coated to reduce fishy burps', 'Molecularly distilled', 'Contains fish: not vegetarian'],
+    ss: '1 softgel (1000 mg)', n: [['Fish oil', '1000 mg'], ['EPA', '360 mg'], ['DHA', '240 mg'], ['Vitamin E', '2 mg']],
+    ing: 'Fish oil (from anchovy, sardine, mackerel), gelatin (fish), glycerol, vitamin E. Contains fish.',
+    how: 'Take 1–2 softgels daily with a meal.', warn: W_STD + ' Contains fish. Check with your doctor if you take blood thinners.', key: ['EPA + DHA', '600 mg'],
+    lab: [['EPA + DHA (per softgel)', '≥ 570 mg', '604 mg']], fbt: ['root-d3k2', 'forge-multi'] },
+  { id: 'root-ashwa', name: 'Rootwell Ashwagandha Root Extract', brand: 'Rootwell', cat: 'vitamins', type: 'Ashwagandha', short: 'ASHWAGANDHA|600 MG', form: 'bottle', diet: 'veg', vegan: true,
+    sizes: [Z('60 capsules', 599, 899, 60, null)], opt: 'Flavour', flavs: ['Unflavoured'],
+    rating: 4.1, rc: 1710, tags: [], goals: ['recovery', 'energy'], stock: 38,
+    desc: 'Standardised ashwagandha root extract in vegetarian capsules, a traditional herb used for everyday stress support.',
+    pts: ['600 mg root extract per capsule', 'Standardised to 5% withanolides', 'Vegan capsules', 'Take with food'],
+    ss: '1 capsule', n: [['Ashwagandha root extract', '600 mg'], ['Withanolides (5%)', '30 mg']],
+    ing: 'Ashwagandha (Withania somnifera) root extract, hydroxypropyl methylcellulose capsule, rice flour.',
+    how: 'Take 1 capsule once or twice daily with food.', warn: W_STD + ' Avoid if you have a thyroid condition unless advised by your doctor.', key: ['Extract per serving', '600 mg'],
+    lab: [['Withanolides (per capsule)', '≥ 30 mg', '31.2 mg']], fbt: ['root-d3k2', 'peak-omega'] },
+  { id: 'volt-carnitine', name: 'Volt L-Carnitine Liquid 1500', brand: 'Volt', cat: 'fatburners', type: 'L-Carnitine', short: 'L-CARNITINE|1500 MG', form: 'bottle', diet: 'veg',
+    sizes: [Z('450 ml', 1099, 1599, 30, null)], opt: 'Flavour', flavs: ['Orange', 'Green Apple'],
+    rating: 4.0, rc: 1280, tags: [], goals: ['weight', 'energy'], stock: 28,
+    desc: 'Liquid L-carnitine tartrate for people who like it in a shot. It supports normal energy metabolism, but it will not burn fat on its own: diet and training do the work.',
+    pts: ['1500 mg L-carnitine tartrate per 15 ml', 'Caffeine-free', 'Use alongside diet and exercise', 'No spot-reduction claims'],
+    ss: '15 ml (1 tablespoon)', n: [['Energy', '10 kcal'], ['L-carnitine (as tartrate)', '1500 mg'], ['Carbohydrate', '2 g']],
+    ing: 'Water, L-carnitine tartrate, acidity regulator (330), preservative (202), flavour, sweetener (955).',
+    how: 'Take 15 ml once a day, 30 minutes before exercise. Shake well.', warn: W_STD, key: ['L-carnitine per serving', '1500 mg'],
+    lab: [['L-carnitine (per 15 ml)', '1500 mg', '1512 mg']], fbt: ['peak-iso', 'aero-shaker'] },
+  { id: 'root-greentea', name: 'Rootwell Green Tea Extract', brand: 'Rootwell', cat: 'fatburners', type: 'Green Tea Extract', short: 'GREEN TEA|EXTRACT', form: 'bottle', diet: 'veg', vegan: true,
+    sizes: [Z('60 capsules', 499, 799, 60, null)], opt: 'Flavour', flavs: ['Unflavoured'],
+    rating: 4.0, rc: 980, tags: [], goals: ['weight', 'energy'], stock: 41,
+    desc: 'Green tea leaf extract standardised to 50% polyphenols. Contains a small amount of natural caffeine. Best seen as a supporting product, not a fat-loss shortcut.',
+    pts: ['500 mg extract per capsule', '50% polyphenols', 'Contains natural caffeine', 'Vegan capsules'],
+    ss: '1 capsule', n: [['Green tea extract', '500 mg'], ['Polyphenols (50%)', '250 mg'], ['Caffeine (natural)', '< 30 mg']],
+    ing: 'Green tea (Camellia sinensis) leaf extract, hydroxypropyl methylcellulose capsule, rice flour.',
+    how: 'Take 1 capsule daily after a meal.', warn: W_CAF, key: ['Extract per serving', '500 mg'],
+    lab: [['Polyphenols (per capsule)', '≥ 250 mg', '256 mg']], fbt: ['volt-carnitine', 'peak-iso'] },
+  { id: 'aero-shaker', name: 'Aero Gear Leak-Proof Shaker', brand: 'Aero Gear', cat: 'accessories', type: 'Shaker', short: 'SHAKER', form: 'shaker', diet: 'veg',
+    sizes: [Z('500 ml', 299, 499, null, null), Z('700 ml', 349, 599, null, null)], opt: 'Colour', flavs: ['Navy', 'Orange', 'Black'],
+    rating: 4.4, rc: 8120, tags: ['bestseller'], goals: ['muscle', 'weight', 'recovery'], stock: 120,
+    desc: 'A leak-proof shaker with a stainless steel mixing ball, a flip-top cap and measurement marks in ml and oz.',
+    pts: ['BPA-free, food-grade polypropylene', 'Screw-tight lid with silicone seal', 'Stainless steel agitator ball', 'Dishwasher-safe on the top rack'],
+    ss: '', n: [['Capacity', '500 ml / 700 ml'], ['Material', 'Food-grade PP, 304 steel ball'], ['BPA', 'Free'], ['Care', 'Top-rack dishwasher safe']],
+    ing: '', how: 'Add liquid first, then powder, close the cap and shake for 15 seconds. Rinse after each use.', warn: 'Do not use with hot liquids. Not for microwave use.', key: ['Capacity', '500 / 700 ml'], lab: null, fbt: ['forge-whey', 'forge-creatine'] },
+  { id: 'aero-straps', name: 'Aero Gear Lifting Straps (Pair)', brand: 'Aero Gear', cat: 'accessories', type: 'Lifting Straps', short: 'LIFTING|STRAPS', form: 'straps', diet: 'veg',
+    sizes: [Z('Free size', 449, 799, null, null)], opt: 'Colour', flavs: ['Black', 'Red', 'Navy'],
+    rating: 4.3, rc: 2030, tags: [], goals: ['muscle'], stock: 55,
+    desc: 'Padded cotton lifting straps for deadlifts, rows and shrugs when your grip gives out before your back does.',
+    pts: ['Heavy-duty cotton webbing', 'Neoprene wrist padding', 'Non-slip stitched grip', 'One size fits most'],
+    ss: '', n: [['Length', '60 cm'], ['Material', 'Cotton + neoprene'], ['Pack', '1 pair']], ing: '', how: 'Thread the strap through the loop, wrap it around the bar twice and tighten.', warn: 'Inspect for wear before each session.', key: ['Material', 'Cotton + neoprene'], lab: null, fbt: ['aero-gloves', 'aero-shaker'] },
+  { id: 'aero-bands', name: 'Aero Gear Resistance Band Set', brand: 'Aero Gear', cat: 'accessories', type: 'Resistance Bands', short: 'RESISTANCE|BANDS', form: 'bands', diet: 'veg',
+    sizes: [Z('5 bands', 799, 1299, null, null)], opt: 'Colour', flavs: ['Black'],
+    rating: 4.2, rc: 1560, tags: ['new'], goals: ['muscle', 'recovery'], stock: 36,
+    desc: 'Five loop bands from light to extra heavy for warm-ups, mobility work, pull-up assistance and travel workouts.',
+    pts: ['5 resistance levels', 'Natural latex loops', 'Carry bag included', 'Works for glute, shoulder and pull-up assistance'],
+    ss: '', n: [['Levels', '5 (light to extra heavy)'], ['Material', 'Natural latex'], ['Length', '104 cm loop']], ing: '', how: 'Choose a level you can control for the full range of motion.', warn: 'Contains latex. Check for tears before each use.', key: ['Levels', '5'], lab: null, fbt: ['aero-straps', 'forge-whey'] },
+  { id: 'aero-gloves', name: 'Aero Gear Gym Gloves', brand: 'Aero Gear', cat: 'accessories', type: 'Gym Gloves', short: 'GYM|GLOVES', form: 'gloves', diet: 'veg',
+    sizes: [Z('M', 499, 799, null, null), Z('L', 499, 799, null, null), Z('XL', 499, 799, null, null)], opt: 'Colour', flavs: ['Black', 'Navy'],
+    rating: 4.0, rc: 1340, tags: [], goals: ['muscle'], stock: 47,
+    desc: 'Breathable gloves with a padded palm and wrist wrap for support on pressing and pulling days.',
+    pts: ['Padded palm to reduce calluses', 'Adjustable wrist wrap', 'Breathable mesh back', 'Machine-washable'],
+    ss: '', n: [['Sizes', 'M, L, XL'], ['Material', 'Mesh + synthetic leather'], ['Care', 'Hand wash']], ing: '', how: 'Pick the size by palm width: M 8–9 cm, L 9–10 cm, XL 10–11 cm.', warn: 'Stop use if the gloves cause skin irritation.', key: ['Material', 'Mesh + synthetic'], lab: null, fbt: ['aero-straps', 'aero-shaker'] },
+  { id: 'stack-starter', name: 'Beginner Starter Kit', brand: 'Forge', cat: 'combos', type: 'Combo', short: 'STARTER|KIT', form: 'combo', diet: 'veg',
+    bundle: [['forge-whey', 0], ['forge-creatine', 0], ['aero-shaker', 0]], sizes: [Z('Bundle', 2499, 4147, null, null)], opt: 'Whey flavour', flavs: ['Chocolate', 'Vanilla', 'Strawberry', 'Cookies & Cream', 'Coffee'],
+    rating: 4.6, rc: 3200, tags: ['bestseller'], goals: ['muscle', 'recovery'], stock: 25,
+    desc: 'Everything you need for your first month: whey protein, creatine and a shaker, at a bundle price.', pts: ['Protein for recovery', 'Creatine for strength', 'Shaker for mixing', 'Cheaper than buying separately'], ss: '', n: [], ing: '', how: '', warn: W_STD, key: ['Includes', '3 items'], lab: null, fbt: [] },
+  { id: 'stack-muscle', name: 'Muscle Gain Stack', brand: 'Forge', cat: 'combos', type: 'Combo', short: 'MUSCLE GAIN|STACK', form: 'combo', diet: 'veg',
+    bundle: [['forge-whey', 1], ['forge-creatine', 1], ['aero-shaker', 1]], sizes: [Z('Bundle', 4999, 7097, null, null)], opt: 'Whey flavour', flavs: ['Chocolate', 'Vanilla', 'Strawberry', 'Cookies & Cream', 'Coffee'],
+    rating: 4.7, rc: 2150, tags: ['new'], goals: ['muscle'], stock: 18,
+    desc: '2 kg whey concentrate, 250 g creatine monohydrate and a 700 ml shaker for a full training block.', pts: ['66 servings of whey', '83 servings of creatine', '700 ml shaker', 'Best value for regular lifters'], ss: '', n: [], ing: '', how: '', warn: W_STD, key: ['Includes', '3 items'], lab: null, fbt: [] },
+  { id: 'stack-lean', name: 'Lean & Active Stack', brand: 'Peak Lab', cat: 'combos', type: 'Combo', short: 'LEAN & ACTIVE|STACK', form: 'combo', diet: 'veg',
+    bundle: [['peak-iso', 0], ['peak-eaa', 0], ['aero-shaker', 1]], sizes: [Z('Bundle', 4399, 6697, null, null)], opt: 'Isolate flavour', flavs: ['Chocolate', 'Vanilla', 'Coffee'],
+    rating: 4.5, rc: 980, tags: [], goals: ['weight', 'recovery'], stock: 15,
+    desc: '1 kg whey isolate, 400 g EAA with electrolytes (Mango flavour) and a 700 ml shaker for people training through a calorie deficit.', pts: ['27 g protein per scoop', 'EAA for around training', '700 ml shaker', 'Low sugar all round'], ss: '', n: [], ing: '', how: '', warn: W_STD, key: ['Includes', '3 items'], lab: null, fbt: [] }
+];
+const byId = id => P.find(p => p.id === id);
+const lowest = p => p.sizes.reduce((a, b) => (b.price < a.price ? b : a));
+const pct = s => Math.round((s.mrp - s.price) / s.mrp * 100);
+const unit = (p, si, sub) => { const b = (p.sizes[si] || p.sizes[0]).price; return sub ? Math.round(b * (100 - CFG.subDisc) / 100) : b; };
+const perServing = (p, si, sub) => { const s = p.sizes[si] || p.sizes[0]; return s.sv ? unit(p, si, sub) / s.sv : null; };
+
+/* sample reviews + Q&A (placeholder content, replace with real customer reviews) */
+const RVP = {
+  powder: [['Aman K.', 5, 'Mixes smoothly in a shaker and tastes good with cold milk. Using it daily for a month now.', '02 Nov 2026'], ['Priya M.', 4, 'Good value for the size. The pack arrived sealed and intact. A little sweet for my taste.', '28 Oct 2026'], ['Rohit D.', 5, 'Delivered in three days and the batch number matched on the verification box.', '19 Oct 2026'], ['Vikram T.', 3, 'Decent product. The flavour is not my favourite, but support answered quickly.', '04 Oct 2026']],
+  pill: [['Sneha R.', 5, 'Easy to swallow and no aftertaste. Easy to remember with breakfast.', '30 Oct 2026'], ['Karan B.', 4, 'Fair price for the count. Bottle was sealed and well packed.', '21 Oct 2026'], ['Divya S.', 4, 'Taking it for about six weeks. No stomach issues for me.', '08 Oct 2026']],
+  gear: [['Arjun P.', 5, 'Solid build for the price. Used it every day for three weeks, no wear yet.', '01 Nov 2026'], ['Meera L.', 4, 'Does the job. Colour is slightly different from the photo.', '24 Oct 2026'], ['Imran H.', 4, 'Good quality. Arrived quickly and well packed.', '12 Oct 2026']]
+};
+const grp = p => (['vitamins', 'fatburners'].includes(p.cat) ? 'pill' : p.cat === 'accessories' ? 'gear' : 'powder');
+const QAP = {
+  protein: [['Can I mix it with milk instead of water?', 'Yes. Milk adds protein and calories and makes it creamier. Water keeps it lighter. If you are lactose sensitive, isolate or plant protein is easier on the stomach.'], ['How many scoops a day?', 'Most people use 1–2 scoops to fill the gap between food and their daily protein target. Check the label for the serving size.']],
+  creatine: [['Do I need a loading phase?', 'No. 3–5 g a day reaches the same level in about 3–4 weeks. Loading just gets you there faster.'], ['Should I take it before or after training?', 'Timing matters little. Taking it every day, including rest days, matters more.']],
+  preworkout: [['How much caffeine is in one scoop?', 'The nutrition panel lists the amount per serving. Count your coffee and tea too, and start with half a scoop if you are new.']],
+  aminos: [['Do I need this if I already take protein?', 'If you hit your daily protein target, aminos add little. They are handy during long sessions or when training fasted.']],
+  gainers: [['Will this make me gain fat?', 'A gainer adds calories. Whether you gain muscle or fat depends on your total intake, training and sleep.']],
+  vitamins: [['Should I take it with food?', 'Yes, with a meal is best, especially for fat-soluble vitamins and capsules that can upset an empty stomach.']],
+  fatburners: [['Will this burn fat by itself?', 'No. Fat loss comes from a calorie deficit. Supplements like this are small add-ons at best.']],
+  accessories: [['What size should I pick?', 'Check the size notes in the product description. If you are between sizes, go up for gloves and straps.']],
+  combos: [['Can I choose the flavour?', 'Yes. Pick the protein flavour on this page before adding to the cart.']]
+};
+
+/* ============ pack art (inline SVG, no image files needed) ============ */
+let UID = 0;
+const lum = h => { const n = parseInt(h.slice(1), 16), f = v => { v /= 255; return v <= .03928 ? v / 12.92 : Math.pow((v + .055) / 1.055, 2.4); }; return .2126 * f(n >> 16) + .7152 * f((n >> 8) & 255) + .0722 * f(n & 255); };
+const onCol = h => (lum(h) > .35 ? '#0d1733' : '#ffffff');
+function panel(p, x, y, w, h, fl, sl) {
+  const c = BC[p.brand], cx = x + w / 2, ls = p.short.split('|'), mx = Math.max(...ls.map(l => l.length));
+  const fs = Math.min(34, (w * .9) / (mx * .52)), fc = FLC[fl] || '#c5c9d2';
+  return `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="10" fill="#fff"/>
+  <text x="${cx}" y="${y + 24}" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-weight="700" font-size="11" letter-spacing="2" fill="${c}">${esc(p.brand.toUpperCase())}</text>
+  ${ls.map((l, i) => `<text x="${cx}" y="${y + 56 + i * fs * .95}" text-anchor="middle" font-family="'Big Shoulders Display',Impact,sans-serif" font-weight="900" font-size="${fs.toFixed(1)}" fill="#0d1733">${esc(l)}</text>`).join('')}
+  <rect x="${x + 14}" y="${y + h - 46}" width="${w - 28}" height="26" rx="13" fill="${fc}"/>
+  <text x="${cx}" y="${y + h - 28.5}" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-weight="700" font-size="12" fill="${onCol(fc)}">${esc(fl)}</text>
+  <text x="${cx}" y="${y + h - 8}" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-weight="600" font-size="10" fill="#566178">${esc(sl)}</text>`;
+}
+function body(p, fl, sl) {
+  const c = BC[p.brand], f = p.form, sh = '<ellipse cx="200" cy="374" rx="112" ry="10" fill="#000" opacity=".18"/>';
+  if (f === 'tub') return `${sh}<rect x="104" y="72" width="192" height="42" rx="10" fill="#151b2b"/><rect x="96" y="108" width="208" height="262" rx="22" fill="${c}"/><rect x="96" y="108" width="40" height="262" rx="22" fill="#fff" opacity=".12"/><rect x="268" y="108" width="36" height="262" rx="22" fill="#000" opacity=".16"/>${panel(p, 116, 150, 168, 174, fl, sl)}`;
+  if (f === 'pouch') return `${sh}<path d="M92 90 Q200 68 308 90 L324 358 Q200 382 76 358 Z" fill="${c}"/><path d="M92 90 Q200 68 308 90 L309 112 Q200 92 91 112 Z" fill="#000" opacity=".22"/><path d="M92 90 L76 358 Q90 362 104 364 L112 100 Z" fill="#fff" opacity=".12"/>${panel(p, 118, 140, 164, 180, fl, sl)}`;
+  if (f === 'bottle') return `${sh}<rect x="168" y="70" width="64" height="40" rx="8" fill="#151b2b"/><rect x="176" y="106" width="48" height="24" fill="${c}"/><rect x="126" y="126" width="148" height="244" rx="26" fill="${c}"/><rect x="126" y="126" width="30" height="244" rx="26" fill="#fff" opacity=".12"/><rect x="246" y="126" width="28" height="244" rx="26" fill="#000" opacity=".16"/>${panel(p, 138, 168, 124, 160, fl, sl)}`;
+  if (f === 'jar') return `${sh}<rect x="108" y="140" width="184" height="42" rx="10" fill="#151b2b"/><rect x="104" y="176" width="192" height="194" rx="20" fill="${c}"/><rect x="104" y="176" width="34" height="194" rx="20" fill="#fff" opacity=".12"/><rect x="266" y="176" width="30" height="194" rx="20" fill="#000" opacity=".16"/>${panel(p, 120, 196, 160, 154, fl, sl)}`;
+  const col = FLC[fl] || '#1f3a8a';
+  if (f === 'shaker') return `${sh}<rect x="150" y="56" width="100" height="22" rx="6" fill="#151b2b"/><rect x="118" y="76" width="164" height="38" rx="8" fill="${col}"/><path d="M122 114 H278 L260 366 Q200 380 140 366 Z" fill="#fff" opacity=".55"/><path d="M122 114 H278 L272 190 H128 Z" fill="${col}" opacity=".25"/><path d="M122 114 L140 366 Q152 370 160 371 L146 114 Z" fill="#fff" opacity=".5"/>${[150, 190, 230, 270, 310].map(y => `<line x1="262" y1="${y}" x2="${y % 80 === 30 ? 246 : 252}" y2="${y}" stroke="#0d1733" stroke-width="2" opacity=".5"/>`).join('')}<text x="200" y="250" text-anchor="middle" font-family="'Big Shoulders Display',Impact,sans-serif" font-weight="900" font-size="30" fill="#0d1733" opacity=".8">AERO GEAR</text><text x="200" y="272" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-weight="700" font-size="12" fill="#0d1733" opacity=".7">${esc(sl.toUpperCase())}</text>`;
+  if (f === 'bands') return `${sh}${['#f2c200', '#4fb04f', '#2f7be0', '#d8323f', '#1b1f2a'].map((k, i) => `<ellipse cx="200" cy="${250 - i * 8}" rx="${62 + i * 18}" ry="${30 + i * 7}" fill="none" stroke="${k}" stroke-width="14"/>`).join('')}<text x="200" y="352" text-anchor="middle" font-family="'Big Shoulders Display',Impact,sans-serif" font-weight="900" font-size="28" fill="#0d1733">RESISTANCE BANDS</text>`;
+  if (f === 'straps') return `${sh}<path d="M120 90 C90 200 120 300 150 340" fill="none" stroke="${col}" stroke-width="26" stroke-linecap="round"/><path d="M270 90 C300 200 270 300 240 340" fill="none" stroke="${col}" stroke-width="26" stroke-linecap="round"/><ellipse cx="135" cy="100" rx="40" ry="26" fill="none" stroke="#151b2b" stroke-width="12"/><ellipse cx="265" cy="100" rx="40" ry="26" fill="none" stroke="#151b2b" stroke-width="12"/><rect x="104" y="300" width="64" height="40" rx="8" fill="#151b2b" transform="rotate(14 136 320)"/><rect x="232" y="300" width="64" height="40" rx="8" fill="#151b2b" transform="rotate(-14 264 320)"/>`;
+  if (f === 'gloves') return `${sh}<rect x="120" y="190" width="160" height="124" rx="30" fill="${col}"/>${[0, 1, 2, 3].map(i => `<rect x="${122 + i * 39}" y="104" width="33" height="${112 - (i === 3 ? 14 : i === 0 ? 10 : 0)}" rx="16" fill="${col}" stroke="#fff" stroke-opacity=".25" stroke-width="2"/>`).join('')}<rect x="76" y="214" width="62" height="34" rx="17" fill="${col}" transform="rotate(-28 106 230)"/><rect x="116" y="300" width="168" height="62" rx="10" fill="#151b2b"/><rect x="136" y="322" width="128" height="10" rx="3" fill="#fff" opacity=".6"/>`;
+  return '';
+}
+function comboBody(p, fl) {
+  const L = [[-34, 40, .78], [150, 108, .62], [236, 168, .5]];
+  return p.bundle.map(([id, si], i) => { const q = byId(id), f = q.opt === 'Flavour' || i === 0 ? (i === 0 ? fl : (q.flavs.includes('Mango') && q.id === 'peak-eaa' ? 'Mango' : q.flavs[0])) : q.flavs[0]; const [x, y, s] = L[i]; return `<g transform="translate(${x} ${y}) scale(${s})">${body(q, f, q.sizes[si].l)}</g>`; }).reverse().join('');
+}
+function art(p, fi = 0, view = 0) {
+  const fl = p.flavs[fi] || p.flavs[0], bc = BC[p.brand] || '#243a73', sl = p.sizes[0].l, id = 'a' + (UID++);
+  let g = '';
+  const full = p.form === 'combo' ? comboBody(p, fl) : body(p, fl, sl);
+  if (view === 0) g = `<circle cx="200" cy="215" r="150" fill="${bc}" opacity=".13"/>${full}`;
+  else if (view === 1) {
+    const rows = p.form === 'combo' ? p.bundle.map(([i2, si]) => [byId(i2).short.replace('|', ' '), byId(i2).sizes[si].l]) : p.n.slice(0, 7);
+    g = `<circle cx="120" cy="230" r="120" fill="${bc}" opacity=".13"/><g transform="translate(-52 70) scale(.72)">${full}</g>
+    <rect x="212" y="52" width="172" height="296" rx="6" fill="#fff" stroke="#0d1733" stroke-width="3"/>
+    <text x="224" y="86" font-family="'Big Shoulders Display',Impact,sans-serif" font-weight="900" font-size="28" fill="#0d1733">${p.form === 'combo' ? 'INCLUDES' : (p.cat === 'accessories' ? 'SPECS' : 'FACTS')}</text>
+    <rect x="224" y="94" width="148" height="6" fill="#0d1733"/>
+    ${rows.map((r, i) => `<text x="224" y="${122 + i * 30}" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="600" fill="#0d1733">${esc(String(r[0]).slice(0, 18))}</text><text x="372" y="${122 + i * 30}" text-anchor="end" font-family="Inter,Arial,sans-serif" font-size="11" fill="#566178">${esc(String(r[1]).slice(0, 14))}</text><line x1="224" x2="372" y1="${130 + i * 30}" y2="${130 + i * 30}" stroke="#d7dde9"/>`).join('')}`;
+  } else {
+    const fls = p.flavs.slice(0, 5), sv = p.sizes[0].sv;
+    g = `<circle cx="150" cy="220" r="130" fill="${bc}" opacity=".13"/><g transform="translate(-34 40) scale(.86)">${full}</g>
+    ${fls.map((f, i) => `<circle cx="318" cy="${96 + i * 34}" r="10" fill="${FLC[f] || '#ccc'}" stroke="#fff" stroke-width="2"/><text x="334" y="${100 + i * 34}" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="600" fill="#0d1733">${esc(f.length > 10 ? f.slice(0, 9) + '…' : f)}</text>`).join('')}
+    ${sv ? `<circle cx="326" cy="322" r="40" fill="${bc}"/><text x="326" y="320" text-anchor="middle" font-family="'Big Shoulders Display',Impact,sans-serif" font-weight="900" font-size="30" fill="#fff">${sv}</text><text x="326" y="338" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-weight="700" font-size="9" letter-spacing="1" fill="#fff">SERVINGS</text>` : ''}`;
+  }
+  return `<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${esc(p.name)}" data-u="${id}">${g}</svg>`;
+}
+
+/* ============ blog (editorial copy, adjust to your voice) ============ */
+const BLOG = [
+  { slug: 'whey-vs-isolate', title: 'Whey concentrate vs isolate', tag: 'Protein', mins: 4, ex: 'What the extra filtering buys you, and when it is worth paying for.', body: [
+    'Both come from milk. Whey is a by-product of cheese making, and the difference between the two is how much it is filtered afterwards.',
+    '## Concentrate', 'Usually 70–80% protein by weight. The rest is some lactose, fat and minerals. It tastes creamier, costs less per kilo, and works well for most people.',
+    '## Isolate', 'Filtered further to about 90% protein or more, with very little lactose, fat or sugar. Per scoop you get a few more grams of protein and fewer calories. Expect to pay noticeably more.',
+    '## Which should you buy?', 'Total daily protein matters far more than the type of whey. Choose concentrate if you tolerate dairy and want value. Choose isolate if dairy upsets your stomach, you are cutting calories, or you want the leanest scoop. Compare protein per serving and price per gram of protein, not just price per kilo.'] },
+  { slug: 'first-protein-powder', title: 'How to pick your first protein powder', tag: 'Beginners', mins: 5, ex: 'Work out how much you need, then read the label before you read the reviews.', body: [
+    'Powder is food, not magic. It helps when whole food does not get you to your target.',
+    '## Start with a number', 'Research on resistance training generally points to about 1.6 g of protein per kg of body weight a day, with up to 2.2 g/kg as a common upper range. A 70 kg lifter is looking at roughly 110–155 g a day. Add up what your meals already give you, and use powder only for the gap.',
+    '## Read the label', 'Look at protein per serving, the serving size, the ingredient list and whether the brand publishes batch test reports. Be wary of long ingredient lists and vague "proprietary blends".',
+    '## Start simple', 'One scoop after training or between meals is enough. Pick a flavour you will actually drink. If you have a kidney condition, speak to your doctor before raising protein intake.'] },
+  { slug: 'creatine-basics', title: 'Creatine monohydrate: how much and when', tag: 'Creatine', mins: 4, ex: 'The most studied supplement in sport, in plain language.', body: [
+    'Creatine helps your muscles recycle energy during short, hard efforts like heavy sets and sprints.',
+    '## Dose', '3–5 g of creatine monohydrate a day is the standard. A loading phase of about 20 g a day split into four doses for 5–7 days gets your stores full sooner, but it is optional.',
+    '## Timing', 'Time of day matters little. Take it with a meal or a drink at a time you will remember, including rest days.',
+    '## What to expect', 'Some people see 1–2 kg of weight gain in the first weeks, mostly extra water inside the muscle. Drink water through the day. If you have a kidney condition or are under 18, speak to your doctor first.'] },
+  { slug: 'pre-workout-label', title: 'Reading a pre-workout label', tag: 'Pre-workout', mins: 4, ex: 'Caffeine, citrulline and beta-alanine: what each number means.', body: [
+    'Most pre-workouts are a few ingredients with a lot of flavour. The label tells you what you are really getting.',
+    '## Caffeine', 'Servings range from about 150 to 300 mg. Healthy adults are generally advised to stay under about 400 mg a day from all sources, so count your coffee and tea. Caffeine stays in your system for hours, so avoid it late in the evening.',
+    '## Citrulline malate', 'Studies commonly use 6–8 g. If a label lists it without an amount, you cannot tell whether the dose is useful.',
+    '## Beta-alanine', 'It can cause a harmless tingling in your skin. It is normal, not a sign of a stronger product.',
+    '## Start low', 'Try half a scoop first. If you train late or avoid stimulants, a caffeine-free formula is the better pick.'] }
+];
+
+/* ============ FAQ ============ */
+const FAQ = [
+  ['Are your products genuine?', 'Every pack carries a batch number. Enter it in the verification box on the product page to check it against our batch records.'],
+  ['Do I need an account to order?', 'No. You can check out as a guest with just an email and mobile number. You can create an account after the order if you want to save details, track orders and earn reward points.'],
+  ['How long does delivery take?', 'Most metro pincodes receive orders in 1–3 working days and other areas in 3–7. Enter your pincode on any product page for an estimate.'],
+  ['Which payment methods do you accept?', 'UPI, debit and credit cards, netbanking, EMI on orders above ₹3,000 and cash on delivery up to ₹5,000 (₹49 handling fee).'],
+  ['Can I return a product?', 'Sealed, unopened packs can be returned within 7 days of delivery. Opened supplements cannot be returned for safety reasons. If an item arrives damaged or wrong, report it within 48 hours with photos.'],
+  ['What is Subscribe & Save?', 'Choose Subscribe & Save on a product page for 10% off. We ship every 30 days. You can skip or cancel any time from your account.'],
+  ['How do reward points work?', 'Account holders earn 5% of every order back as points. 1 point equals ₹1 and you can use up to 20% of an order value in points.'],
+  ['Are supplements safe for under 18s?', 'Our products are not intended for people under 18. If you are pregnant, nursing, on medication or have a medical condition, speak to your doctor first.']
+];
+
+/* ============ state ============ */
+const KEY = 'forge_nutrition_v1';
+const seedOrder = () => ({ id: 'FG-100001', ts: Date.now() - 3 * DAY, items: [{ pid: 'forge-whey', size: 0, flav: 0, qty: 1, sub: false, price: 2199 }], t: { sub: 2199, cd: 0, pts: 0, ship: 0, cod: 0, total: 2199, gst: 335 }, contact: { name: 'Demo Customer', email: 'demo@example.com', phone: '9999999999' }, addr: { name: 'Demo Customer', line: '12 Example Road', city: 'New Delhi', state: 'Delhi', pin: '110001' }, pay: 'UPI', stage: 2, demo: true });
+const defaults = () => ({ cart: [], wish: [], cmp: [], user: null, orders: [seedOrder()], seq: 100002, coupon: null, reviews: {}, qa: {}, alerts: [], helpful: {}, subs: [], pin: '', sawPop: false, co: {}, redeem: false });
+let S = (() => { try { const j = JSON.parse(localStorage.getItem(KEY)); if (j && typeof j === 'object') return Object.assign(defaults(), j); } catch (e) {} return defaults(); })();
+const save = () => { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} };
+let V = null, D = {}, Q = { step: 0, a: {} }, ACC = { tab: 'orders' }, OTP = {}, lastKey = '';
+
+/* ============ pricing + cart ============ */
+const vtxt = (p, si, fi) => {
+  const a = [], f = p.flavs[fi], s = p.sizes[si];
+  if (f && (p.flavs.length > 1 || f !== 'Unflavoured')) a.push(f);
+  if (s && s.l !== 'Bundle') a.push(s.l);
+  return a.join(' · ');
+};
+function totals(o = {}) {
+  let sub = 0, mrp = 0, count = 0;
+  const lines = S.cart.map(l => { const p = byId(l.pid), u = unit(p, l.size, l.sub); sub += u * l.qty; mrp += p.sizes[l.size].mrp * l.qty; count += l.qty; return { ...l, p, u }; });
+  let cd = 0, fs = false, cmsg = '';
+  const c = COUPONS[S.coupon];
+  if (c) { if (sub >= c.min) { if (c.t === 'pct') cd = Math.min(Math.round(sub * c.v / 100), c.max); else fs = true; } else cmsg = `Add ${inr(c.min - sub)} more to use ${S.coupon}`; }
+  const after = sub - cd;
+  const pts = (S.redeem && S.user && S.user.points > 0) ? Math.min(S.user.points, Math.floor(after * .2)) : 0;
+  const ship = (count === 0 || fs || after >= CFG.freeShip) ? 0 : CFG.shipFee;
+  const cod = (o.checkout && (S.co.pay === 'cod')) ? CFG.codFee : 0;
+  const total = after - pts + ship + cod;
+  return { lines, sub, mrp, count, cd, pts, ship, cod, total, gst: Math.round(total * 18 / 118), cmsg, after, save: mrp - sub + cd + pts };
+}
+function addCart(pid, size, flav, qty = 1, sub = false) {
+  const p = byId(pid);
+  if (!p || p.stock === 0) return false;
+  const ex = S.cart.find(l => l.pid === pid && l.size === size && l.flav === flav && !!l.sub === !!sub);
+  if (ex) ex.qty = Math.min(10, ex.qty + qty); else S.cart.push({ pid, size, flav, qty, sub: !!sub });
+  save(); cartChanged(); return true;
+}
+function cartChanged() {
+  const n = S.cart.reduce((a, l) => a + l.qty, 0);
+  $('#t-cart').innerHTML = ic('cart', 24) + `<i class="badge">${n || ''}</i>`;
+  $('#t-wish').innerHTML = ic('heart', 22) + `<i class="badge">${S.wish.length || ''}</i>`;
+  $('#t-cmp').innerHTML = ic('compare', 22) + `<i class="badge">${S.cmp.length || ''}</i>`;
+  $('#t-acc').innerHTML = ic('user', 22) + (S.user ? '<i class="badge" style="background:var(--good);color:#fff;min-width:10px;height:10px;top:8px;right:8px;padding:0"></i>' : '');
+  if ($('#cartd').classList.contains('open')) renderCart();
+  if ($('#co-sum')) renderSummary();
+  const b = $('#cmpbar');
+  if (S.cmp.length) { b.hidden = false; b.innerHTML = `<span><b>${S.cmp.length}</b> of 3 selected to compare</span><a class="btn sm" href="#compare">Compare now</a><button class="btn sm ghost" data-act="cmpclear">Clear</button>`; } else b.hidden = true;
+}
+function toast(msg) {
+  const t = document.createElement('div'); t.className = 'toast'; t.textContent = msg; $('#toast').appendChild(t);
+  setTimeout(() => t.remove(), 3000);
+}
+
+/* ============ product card + shared bits ============ */
+function card(p) {
+  const lo = lowest(p), off = pct(lo), w = S.wish.includes(p.id), c = S.cmp.includes(p.id), oos = p.stock === 0;
+  return `<article class="pc">
+    <a class="pc-img" href="#product-${p.id}" aria-label="${esc(p.name)}">${art(p, 0, 0)}<span class="tag">${oos ? '<span class="oos">Sold out</span>' : `<span class="off">${off}% off</span>`}${p.tags.includes('new') ? '<span class="new">New</span>' : ''}${p.tags.includes('bestseller') ? '<span class="new">Bestseller</span>' : ''}</span></a>
+    <button class="wish ${w ? 'on' : ''}" data-act="wish" data-id="${p.id}" aria-label="${w ? 'Remove from' : 'Add to'} wishlist" aria-pressed="${w}">${ic('heart', 18, w)}</button>
+    <div class="pc-b">
+      <div class="pc-brand">${dietDot(p.diet)} ${esc(p.brand)}</div>
+      <a class="pc-name" href="#product-${p.id}">${esc(p.name)}</a>
+      <div class="pc-r">${stars(p.rating)}<span>${p.rating.toFixed(1)} (${p.rc.toLocaleString('en-IN')})</span></div>
+      <div class="pc-p"><b class="num">${inr(lo.price)}</b><s>${inr(lo.mrp)}</s></div>
+      ${p.sizes.length > 1 ? `<div class="note">${p.sizes.length} sizes from ${esc(lo.l)}</div>` : `<div class="note">${esc(lo.l)}</div>`}
+      <div class="pc-a">${oos ? `<a class="btn sm ghost" href="#product-${p.id}">Notify me</a>` : `<button class="btn sm" data-act="quick" data-id="${p.id}">Add</button>`}<label class="cmp"><input type="checkbox" data-act="cmp" data-id="${p.id}" ${c ? 'checked' : ''}> Compare</label></div>
+    </div></article>`;
+}
+const rail = list => `<div class="rail-wrap"><button class="rail-btn l" data-act="rail" data-d="-1" aria-label="Scroll left">${ic('chev')}</button><div class="rail">${list.map(card).join('')}</div><button class="rail-btn r" data-act="rail" data-d="1" aria-label="Scroll right">${ic('chev')}</button></div>`;
+const secHead = (t, sub, href, lbl) => `<div class="sec-h"><div><h2>${t}</h2>${sub ? `<p>${sub}</p>` : ''}</div>${href ? `<a class="link" href="${href}">${lbl || 'See all'}</a>` : ''}</div>`;
+const crumbs = a => `<nav class="crumb" aria-label="Breadcrumb"><a href="#home">Home</a>${a.map(([l, h]) => ` <span>/</span> ${h ? `<a href="${h}">${l}</a>` : `<span>${l}</span>`}`).join('')}</nav>`;
+const CATREP = { protein: 'forge-whey', creatine: 'forge-creatine', preworkout: 'volt-ignite', aminos: 'peak-eaa', gainers: 'forge-mass', vitamins: 'root-d3k2', fatburners: 'volt-carnitine', accessories: 'aero-shaker', combos: 'stack-muscle' };
+const batchNo = p => { const h = H(p.id); return p.brand.split(' ').map(w => w[0]).join('').toUpperCase().slice(0, 2) + '26-' + (1000 + h % 9000) + '-B' + (1 + h % 5); };
+function pinInfo(pin) {
+  if (!/^[1-9]\d{5}$/.test(pin)) return null;
+  const metro = ['110', '400', '560', '600', '700', '500', '411', '380', '122', '201'].includes(pin.slice(0, 3));
+  const remote = ['19', '18', '78', '79', '74', '75'].includes(pin.slice(0, 2));
+  const [a, b] = metro ? [1, 2] : remote ? [5, 8] : ['7', '8'].includes(pin[0]) ? [4, 7] : [3, 5];
+  const d = n => fmtDate(Date.now() + n * DAY);
+  return { a, b, from: d(a), to: d(b), cod: !remote, metro };
+}
+
+/* ============ router + view renderers ============ */
+function render(scroll = true) {
+  const h = (location.hash || '#home').slice(1);
+  const i = h.indexOf('-'), name = i < 0 ? h : h.slice(0, i), arg = i < 0 ? '' : h.slice(i + 1);
+  const key = name + '-' + arg;
+  if (key !== lastKey) { V = { f: { brands: [], price: [], diet: [], types: [], flavs: [], sizes: [], rating: 0 }, sort: 'pop', fo: false }; lastKey = key; closeAll(); }
+  document.body.classList.toggle('has-bar', name === 'product');
+  const fn = { home: renderHome, shop: renderShop, cat: renderShop, goal: renderShop, brand: renderShop, search: renderShop, product: () => renderProduct(arg), checkout: renderCheckout, order: () => renderOrderDone(arg), account: renderAccount, wishlist: renderWishlist, compare: renderCompare, finder: renderFinder, blog: () => (arg ? renderPost(arg) : renderBlog()), track: renderTrack, faq: renderFaq, about: renderAbout, contact: renderContact, policy: () => renderPolicy(arg) }[name];
+  $('#view').innerHTML = fn ? fn(name, arg) : notFound();
+  drawChrome(name, arg);
+  if (scroll) window.scrollTo(0, 0);
+}
+function notFound() { return `<div class="wrap page"><div class="empty"><h2>Page not found</h2><p>That page does not exist or has moved.</p><a class="btn" href="#shop">Browse the shop</a></div></div>`; }
+function drawChrome(name, arg) {
+  $('#cats').innerHTML = [['Shop all', '#shop', 'shop'], ...CATS.map(([k, l]) => [l, '#cat-' + k, 'cat-' + k]), ['Goal finder', '#finder', 'finder'], ['Blog', '#blog', 'blog']].map(([l, h, k]) => `<a href="${h}" class="${(name === k || name + '-' + arg === k) ? 'on' : ''}">${l}</a>`).join('');
+  cartChanged();
+}
+
+function renderHome() {
+  const best = P.filter(p => p.tags.includes('bestseller') && p.cat !== 'combos'), fresh = P.filter(p => p.tags.includes('new') && p.cat !== 'combos').slice(0, 4), combos = P.filter(p => p.cat === 'combos');
+  const hero = `<svg viewBox="0 0 480 400" aria-hidden="true"><circle cx="240" cy="210" r="170" fill="#d4460a" opacity=".22"/><g transform="translate(-70 60) scale(.8)">${body(byId('volt-ignite'), 'Blue Raspberry', '300 g')}</g><g transform="translate(236 90) scale(.78)">${body(byId('aero-shaker'), 'Orange', '700 ml')}</g><g transform="translate(86 0)">${body(byId('forge-whey'), 'Chocolate', '2 kg')}</g></svg>`;
+  return `<section class="hero"><div class="wrap hero-in"><div><h1>Fuel the<br><em>next rep.</em></h1><p>Protein, creatine, pre-workouts and gear with the nutrition panel, ingredients and batch details on every page. No account needed to order.</p><div class="cta"><a class="btn" href="#shop">Shop all supplements</a><a class="btn ghost" href="#finder">Find my stack</a></div><p class="code">First order? Use <b>WELCOME10</b> at checkout.</p></div><div class="hero-art">${hero}</div></div></section>
+  <section class="trust"><div class="wrap trust-in">${[['shield', 'Batch verified', 'Check your pack by batch number'], ['flask', 'Lab reports', 'Published on every product page'], ['truck', 'Free shipping', `On orders above ${inr(CFG.freeShip)}`], ['refresh', '7-day returns', 'For sealed, unopened packs']].map(([i, a, b]) => `<div class="trust-it">${ic(i, 28)}<div><b>${a}</b>${b}</div></div>`).join('')}</div></section>
+  <section class="sec"><div class="wrap">${secHead('Shop by category')}<div class="cat-grid">${CATS.map(([k, l]) => `<a class="cat-t" href="#cat-${k}"><div class="im">${art(byId(CATREP[k]), 0, 0)}</div><b>${l}</b></a>`).join('')}</div></div></section>
+  <section class="sec" style="padding-top:0"><div class="wrap">${secHead('Shop by goal', 'Start from what you want to achieve.')}<div class="goal-grid">${Object.entries(GOALS).map(([k, [t, d]]) => `<a class="goal" href="#goal-${k}"><h3>${t}</h3><p>${d}</p><span>Shop ${ic('chev', 18)}</span></a>`).join('')}</div></div></section>
+  <section class="sec" style="padding-top:0"><div class="wrap">${secHead('Bestsellers', '', '#shop')}${rail(best)}</div></section>
+  <section class="sec" style="padding-top:0"><div class="wrap">${secHead('Combo deals', 'Bundles priced below buying each item separately.', '#cat-combos')}<div class="pgrid">${combos.map(card).join('')}</div></div></section>
+  <section class="sec" style="padding-top:0"><div class="wrap">${secHead('New arrivals', '', '#shop')}<div class="pgrid">${fresh.map(card).join('')}</div></div></section>
+  <section class="sec" style="padding-top:0"><div class="wrap"><div class="band-cta"><div><h2>Not sure what to buy?</h2><p>Answer four quick questions about your goal, diet and budget and get a starter stack you can add to your cart in one tap.</p></div><a class="btn" href="#finder">Take the 1-minute finder</a></div></div></section>
+  <section class="sec" style="padding-top:0"><div class="wrap">${secHead('Brands')}<div class="brands">${Object.keys(BC).map(b => `<a href="#brand-${slug(b)}">${b}</a>`).join('')}</div></div></section>
+  <section class="sec" style="padding-top:0"><div class="wrap">${secHead('Learn before you buy', '', '#blog', 'All guides')}<div class="blog-grid">${BLOG.slice(0, 3).map(postCard).join('')}</div></div></section>
+  <section class="sec" style="padding-top:0"><div class="wrap"><div class="news-box"><h2>Get offers and new-launch alerts</h2><p class="muted" style="margin-top:6px">One email a week, unsubscribe any time.</p><form class="news" data-form="news" novalidate><input id="news-e" type="email" placeholder="you@example.com" aria-label="Email address" autocomplete="email"><button class="btn" type="submit">Subscribe</button></form><div class="err bad note" id="news-err"></div></div></div></section>`;
+}
+const postCard = b => `<a class="post" href="#blog-${b.slug}"><div class="im">${esc(b.title)}</div><div class="b"><small>${b.tag} · ${b.mins} min read</small><b>${esc(b.ex)}</b></div></a>`;
+
+/* ----- shop listing ----- */
+const PB = [[0, 500], [500, 1000], [1000, 2500], [2500, 5000], [5000, 1e9]], PBL = ['Under ₹500', '₹500 – ₹1,000', '₹1,000 – ₹2,500', '₹2,500 – ₹5,000', 'Above ₹5,000'];
+const WB = [[0, 251], [251, 1001], [1001, 1e9]], WBL = ['Up to 250 g', '251 g – 1 kg', 'Above 1 kg'];
+const inB = (v, b) => v >= b[0] && v < b[1];
+function shopBase(name, arg) {
+  let list = P.slice(), title = 'All supplements', sub = 'Everything in stock, with batch-verified authenticity.', cr = [['Shop']];
+  if (name === 'cat') { list = P.filter(p => p.cat === arg); title = CATN[arg] || 'Category'; cr = [['Shop', '#shop'], [title]]; }
+  if (name === 'goal') { list = P.filter(p => p.goals.includes(arg)); title = 'For ' + (GOALS[arg] ? GOALS[arg][0].toLowerCase() : arg); sub = GOALS[arg] ? GOALS[arg][1] : ''; cr = [['Shop', '#shop'], [title]]; }
+  if (name === 'brand') { list = P.filter(p => slug(p.brand) === arg); const b = Object.keys(BC).find(x => slug(x) === arg) || arg; title = b; sub = ''; cr = [['Shop', '#shop'], [b]]; }
+  if (name === 'search') { const q = arg.replace(/-/g, ' '), ws = q.split(' ').filter(Boolean); list = P.filter(p => { const hay = (p.name + ' ' + p.brand + ' ' + CATN[p.cat] + ' ' + p.type + ' ' + p.goals.join(' ') + ' ' + p.flavs.join(' ')).toLowerCase(); return ws.every(w => hay.includes(w)); }); title = `Results for “${esc(q)}”`; sub = ''; cr = [['Shop', '#shop'], ['Search']]; }
+  return { list, title, sub, cr };
+}
+function applyF(list) {
+  const f = V.f;
+  return list.filter(p => {
+    if (f.brands.length && !f.brands.includes(p.brand)) return false;
+    if (f.price.length && !f.price.some(i => inB(lowest(p).price, PB[i]))) return false;
+    if (f.diet.length && !f.diet.includes(p.diet)) return false;
+    if (f.types.length && !f.types.includes(p.type)) return false;
+    if (f.flavs.length && !(p.opt === 'Flavour' && p.flavs.some(x => f.flavs.includes(x)))) return false;
+    if (f.sizes.length && !p.sizes.some(s => s.w && f.sizes.some(i => inB(s.w, WB[i])))) return false;
+    if (f.rating && p.rating < f.rating) return false;
+    return true;
+  });
+}
+const SORTS = { pop: ['Popularity', (a, b) => b.rc - a.rc], plh: ['Price: low to high', (a, b) => lowest(a).price - lowest(b).price], phl: ['Price: high to low', (a, b) => lowest(b).price - lowest(a).price], rate: ['Top rated', (a, b) => b.rating - a.rating || b.rc - a.rc], new: ['Newest first', (a, b) => (b.tags.includes('new') ? 1 : 0) - (a.tags.includes('new') ? 1 : 0)] };
+function filtersHTML(base) {
+  const f = V.f, uniq = a => [...new Set(a)];
+  const brands = uniq(base.map(p => p.brand)), types = uniq(base.filter(p => p.cat === 'protein').map(p => p.type)), flavs = uniq(base.filter(p => p.opt === 'Flavour').flatMap(p => p.flavs));
+  const chk = (k, v, lab, on, extra = '') => `<label class="fo"><input type="checkbox" data-act="f" data-k="${k}" value="${esc(v)}" ${on ? 'checked' : ''}>${extra}<span>${esc(lab)}</span></label>`;
+  return `<div class="f-close"><h3>Filters</h3><button class="icon-btn" data-act="fclose" aria-label="Close filters">${ic('x')}</button></div>
+  <div class="fg"><h4>Brand</h4>${brands.map(b => chk('brands', b, b, f.brands.includes(b))).join('')}</div>
+  <div class="fg"><h4>Price</h4>${PBL.map((l, i) => chk('price', i, l, f.price.includes(i))).join('')}</div>
+  <div class="fg"><h4>Diet</h4>${chk('diet', 'veg', 'Vegetarian', f.diet.includes('veg'), dietDot('veg'))}${chk('diet', 'nonveg', 'Non-vegetarian', f.diet.includes('nonveg'), dietDot('nonveg'))}</div>
+  ${types.length > 1 ? `<div class="fg"><h4>Protein type</h4>${types.map(t => chk('types', t, t, f.types.includes(t))).join('')}</div>` : ''}
+  ${flavs.length ? `<div class="fg"><h4>Flavour</h4>${flavs.map(x => chk('flavs', x, x, f.flavs.includes(x), `<i class="sw" style="background:${FLC[x] || '#ccc'}"></i>`)).join('')}</div>` : ''}
+  <div class="fg"><h4>Pack size</h4>${WBL.map((l, i) => chk('sizes', i, l, f.sizes.includes(i))).join('')}</div>
+  <div class="fg"><h4>Rating</h4>${[[0, 'Any rating'], [4, '4★ and above'], [3, '3★ and above']].map(([v, l]) => `<label class="fo"><input type="radio" name="rate" data-act="frate" value="${v}" ${f.rating === v ? 'checked' : ''}><span>${l}</span></label>`).join('')}</div>
+  <button class="btn ghost block" data-act="fclear">Clear all filters</button>`;
+}
+function activeChips() {
+  const f = V.f, c = [];
+  f.brands.forEach(v => c.push(['brands', v, v])); f.price.forEach(v => c.push(['price', v, PBL[v]])); f.diet.forEach(v => c.push(['diet', v, v === 'veg' ? 'Vegetarian' : 'Non-vegetarian']));
+  f.types.forEach(v => c.push(['types', v, v])); f.flavs.forEach(v => c.push(['flavs', v, v])); f.sizes.forEach(v => c.push(['sizes', v, WBL[v]]));
+  if (f.rating) c.push(['rating', f.rating, f.rating + '★ and above']);
+  return c;
+}
+function renderShop(name, arg) {
+  const { list, title, sub, cr } = shopBase(name, arg), res = applyF(list).sort(SORTS[V.sort][1]), chips = activeChips();
+  return `<div class="wrap">${crumbs(cr)}<div class="shop-h"><div><h1>${title}</h1>${sub ? `<p class="muted" style="margin-top:8px">${sub}</p>` : ''}</div></div>
+  <div class="shop"><aside class="filters ${V.fo ? 'open' : ''}" id="filters" aria-label="Filters">${filtersHTML(list)}</aside>
+  <section><div class="sbar"><button class="btn ghost sm f-toggle" data-act="fopen">${ic('filter', 16)} Filters${chips.length ? ` (${chips.length})` : ''}</button><span class="muted num">${res.length} product${res.length === 1 ? '' : 's'}</span><label style="margin-left:auto;display:flex;align-items:center;gap:8px"><span class="muted" style="font-size:13px">Sort</span><select id="sort" data-act="sort" aria-label="Sort products">${Object.entries(SORTS).map(([k, [l]]) => `<option value="${k}" ${V.sort === k ? 'selected' : ''}>${l}</option>`).join('')}</select></label></div>
+  ${chips.length ? `<div class="fchips" style="margin-bottom:14px">${chips.map(([k, v, l]) => `<span class="fchip">${esc(l)}<button data-act="fchip" data-k="${k}" data-v="${esc(v)}" aria-label="Remove ${esc(l)}">${ic('x', 12)}</button></span>`).join('')}<button class="link" data-act="fclear">Clear all</button></div>` : ''}
+  ${res.length ? `<div class="pgrid">${res.map(card).join('')}</div>` : `<div class="empty"><h3>No products match</h3><p>Try removing a filter or searching for something else.</p><button class="btn" data-act="fclear">Clear filters</button></div>`}</section></div></div>`;
+}
+
+/* ----- product page ----- */
+function renderProduct(id) {
+  const p = byId(id); if (!p) return notFound();
+  if (D.pid !== id) D = { pid: id, size: 0, flav: 0, qty: 1, sub: false, view: 0, pinRes: S.pin ? pinInfo(S.pin) : null, fbt: ['self', ...(p.fbt || [])], rate: 5, img: null };
+  const s = p.sizes[D.size] || p.sizes[0], u = unit(p, D.size, D.sub), oos = p.stock === 0, ps = perServing(p, D.size, D.sub), isCombo = p.cat === 'combos', w = S.wish.includes(p.id), c = S.cmp.includes(p.id);
+  const optHTML = p.flavs.length > 1 || p.opt !== 'Flavour' || p.flavs[0] !== 'Unflavoured' ? `<div class="opt"><h4>${p.opt} <span>${esc(p.flavs[D.flav])}</span></h4><div class="seg">${p.flavs.map((f, i) => `<button class="${i === D.flav ? 'on' : ''}" data-act="pflav" data-i="${i}" ${oos ? 'disabled' : ''} aria-pressed="${i === D.flav}"><i class="sw" style="background:${FLC[f] || '#ccc'}"></i>${esc(f)}</button>`).join('')}</div></div>` : '';
+  const sizeHTML = p.sizes.length > 1 ? `<div class="opt"><h4>${p.cat === 'accessories' && p.sizes[0].l.length < 4 ? 'Size' : 'Pack size'} <span>${esc(s.l)}</span></h4><div class="seg">${p.sizes.map((z, i) => `<button class="${i === D.size ? 'on' : ''}" data-act="psize" data-i="${i}" ${oos ? 'disabled' : ''} aria-pressed="${i === D.size}">${esc(z.l)}<small>${inr(z.price)}${z.sv ? ` · ${z.sv} servings` : ''}</small></button>`).join('')}</div></div>` : '';
+  const buyType = !oos && !isCombo && p.cat !== 'accessories' ? `<div class="opt"><h4>Purchase type</h4><div class="buy-type"><label class="${!D.sub ? 'on' : ''}"><input type="radio" name="bt" data-act="btype" value="0" ${!D.sub ? 'checked' : ''}><span><b>One-time purchase</b></span></label><label class="${D.sub ? 'on' : ''}"><input type="radio" name="bt" data-act="btype" value="1" ${D.sub ? 'checked' : ''}><span><b>Subscribe &amp; save ${CFG.subDisc}%</b><small>Delivered every 30 days. Skip or cancel any time.</small></span></label></div></div>` : '';
+  const buy = oos ? `<div class="box" style="margin-top:20px"><b>Currently sold out</b><p class="note" style="margin:4px 0 10px">Leave your email and we will notify you when it is back.</p><form class="verify" data-form="alert" novalidate><input id="al-e" type="email" placeholder="you@example.com" aria-label="Email for stock alert" autocomplete="email"><button class="btn" type="submit">Notify me</button></form><div class="note bad" id="al-err"></div></div>`
+    : `<div class="buy"><div class="qty" role="group" aria-label="Quantity"><button data-act="pqty" data-d="-1" aria-label="Decrease">${ic('minus', 16)}</button><span class="num" aria-live="polite">${D.qty}</span><button data-act="pqty" data-d="1" aria-label="Increase">${ic('plus', 16)}</button></div><button class="btn" data-act="padd">${ic('cart', 18)} Add to cart</button><button class="btn dark" data-act="pnow">Buy now</button><button class="icon-btn ${w ? 'on' : ''}" data-act="wish" data-id="${p.id}" aria-label="Wishlist" aria-pressed="${w}">${ic('heart', 20, w)}</button><button class="icon-btn ${c ? 'on' : ''}" data-act="cmpbtn" data-id="${p.id}" aria-label="Compare" aria-pressed="${c}">${ic('compare', 20)}</button></div>`;
+  const pinH = D.pinRes ? `<span class="good">Delivery by ${D.pinRes.from} – ${D.pinRes.to}</span><span class="muted"> · ${D.pinRes.cod ? 'Cash on delivery available' : 'Prepaid only for this pincode'}</span>` : (S.pin && D.pinChecked ? '<span class="bad">Enter a valid 6-digit pincode</span>' : '');
+  const batch = batchNo(p), edible = p.lab !== null && !isCombo;
+  const lab = edible ? `<section class="psec" id="s-lab"><h2>Lab report &amp; authenticity</h2><div class="two"><div><div class="pill sample" style="margin-bottom:10px">Sample report, replace with your batch COA</div><div class="tscroll"><table class="t"><thead><tr><th>Parameter</th><th>Label / limit</th><th>Tested</th></tr></thead><tbody>${[...p.lab, ...MICRO].map(r => `<tr><td>${esc(r[0])}</td><td>${esc(r[1])}</td><td>${esc(r[2])}</td></tr>`).join('')}</tbody></table></div></div>
+    <div class="box"><h3>Verify your pack</h3><p class="note" style="margin-top:8px">Find the batch number printed on your pack and enter it to confirm it matches our records. Latest batch on this page: <b>${batch}</b> · Mfd 10/2026 · Best before 09/2028.</p><form class="verify" data-form="verify" data-b="${batch}" novalidate><input id="vb" placeholder="e.g. ${batch}" aria-label="Batch number" autocomplete="off"><button class="btn" type="submit">Verify</button></form><div class="res" id="vres" aria-live="polite"></div></div></div></section>` : '';
+  const nut = isCombo ? `<section class="psec" id="s-nut"><h2>What is included</h2><div class="box">${p.bundle.map(([i2, si]) => { const q = byId(i2); return `<div class="rec"><div class="im">${art(q, 0, 0)}</div><div><a href="#product-${q.id}"><b>${esc(q.name)}</b></a><div class="note">${esc(q.sizes[si].l)} · ${q.key ? esc(q.key[0]) + ': ' + esc(q.key[1]) : ''}</div></div><a class="link" href="#product-${q.id}">View details</a></div>`; }).join('')}</div><p class="note" style="margin-top:10px">Open each item for its nutrition facts, ingredients and lab report.</p></section>`
+    : `<section class="psec" id="s-nut"><h2>${p.cat === 'accessories' ? 'Specifications' : 'Nutrition &amp; ingredients'}</h2><div class="two"><div class="facts"><h4>${p.cat === 'accessories' ? 'Specifications' : 'Supplement facts'}</h4>${p.ss ? `<div class="ss">Serving size: <b>${esc(p.ss)}</b>${s.sv ? `<br>Servings per container: <b>${s.sv}</b>` : ''}</div>` : ''}${p.n.map(([k, v]) => `<div class="row ${/^of which/.test(k) ? 'sub' : ''}"><span>${esc(k)}</span><b>${esc(v)}</b></div>`).join('')}</div>
+    <div class="form-g">${p.ing ? `<div class="box"><h4>Ingredients</h4><p style="margin-top:8px">${esc(p.ing)}</p></div>` : ''}<div class="box"><h4>${p.cat === 'accessories' ? 'How to use' : 'Directions to use'}</h4><p style="margin-top:8px">${esc(p.how)}</p></div><div class="box"><h4>Warnings</h4><p style="margin-top:8px">${esc(p.warn)}</p></div></div></div></section>`;
+  const base = RVP[grp(p)], st = H(p.id) % base.length, sample = [0, 1, 2].map(i => base[(st + i) % base.length]), mine = S.reviews[p.id] || [];
+  const wts = [1, 2, 3, 4, 5].map(k => Math.exp(-Math.pow(k - Math.min(5, p.rating + .35), 2) / 1.1)), tw = wts.reduce((a, b) => a + b, 0);
+  const rev = `<section class="psec" id="s-rev"><h2>Reviews</h2><div class="rev-top"><div><div class="big num">${p.rating.toFixed(1)}</div>${stars(p.rating)}<div class="note" style="margin-top:4px">${p.rc.toLocaleString('en-IN')} ratings <span class="pill sample">Sample</span></div></div><div class="bars">${[5, 4, 3, 2, 1].map(k => { const v = Math.round(wts[k - 1] / tw * 100); return `<div class="bar"><span>${k}★</span><i><b style="width:${v}%"></b></i><span class="num">${v}%</span></div>`; }).join('')}</div></div>
+    <div style="margin-top:12px">${mine.map((r, i) => revRow(r, 'Your review', p.id, 'm' + i)).join('')}${sample.map((r, i) => revRow({ n: r[0], r: r[1], t: r[2], d: r[3] }, 'Sample review', p.id, 's' + i)).join('')}</div>
+    <div class="box" style="margin-top:18px"><h3>Write a review</h3><form class="form-g" data-form="review" style="margin-top:12px" novalidate><div class="fld"><span>Your rating</span><div class="starpick" role="radiogroup" aria-label="Rating">${[1, 2, 3, 4, 5].map(k => `<button type="button" class="${k <= D.rate ? 'on' : ''}" data-act="rate" data-i="${k}" aria-label="${k} star${k > 1 ? 's' : ''}">★</button>`).join('')}</div></div><div class="cols2"><label class="fld"><span>Name</span><input id="rv-n" autocomplete="name" placeholder="Your name"></label><label class="fld"><span>Photo (optional)</span><input id="rimg" type="file" accept="image/*"></label></div><label class="fld"><span>Review</span><textarea id="rv-t" placeholder="What did you like or dislike?"></textarea></label><div class="note bad" id="rv-err"></div><div><button class="btn" type="submit">Submit review</button></div></form><p class="note" style="margin-top:8px">Reviews are saved in this browser only in this demo.</p></div></section>`;
+  const qas = [...(S.qa[p.id] || []).map(q => [q[0], null]), ...(QAP[p.cat] || [])];
+  const qa = `<section class="psec" id="s-qa"><h2>Questions &amp; answers</h2>${qas.map(([q, a]) => `<div class="qa"><b>Q: ${esc(q)}</b><p class="muted">${a ? 'A: ' + esc(a) + ' <span class="pill sample">Sample</span>' : 'Your question is saved. Answers will appear here once the store replies.'}</p></div>`).join('')}<form class="verify" data-form="qa" style="margin-top:14px" novalidate><input id="qa-t" placeholder="Ask a question about this product" aria-label="Your question" style="text-transform:none"><button class="btn" type="submit">Ask</button></form><div class="note bad" id="qa-err"></div></section>`;
+  const items = ['self', ...(p.fbt || [])].map(x => x === 'self' ? p : byId(x)).filter(Boolean);
+  const chosen = items.filter(x => D.fbt.includes(x === p ? 'self' : x.id));
+  const fbtTot = chosen.reduce((a, x) => a + (x === p ? u : x.sizes[0].price), 0);
+  const fbt = !isCombo && items.length > 1 && !oos ? `<section class="psec"><h2>Frequently bought together</h2><div class="box"><div class="fbt">${items.map((x, i) => `${i ? '<span class="plus">+</span>' : ''}<div class="it"><div class="im">${art(x, x === p ? D.flav : 0, 0)}</div>${x === p ? 'This item' : esc(x.name.replace(x.brand + ' ', '').slice(0, 24))}</div>`).join('')}</div><div class="fbt-l" style="margin-top:12px">${items.map(x => { const k = x === p ? 'self' : x.id; return `<label><input type="checkbox" data-act="fbt" data-id="${k}" ${D.fbt.includes(k) ? 'checked' : ''}><span>${x === p ? 'This item: ' : ''}${esc(x.name)} <b class="num">${inr(x === p ? u : x.sizes[0].price)}</b></span></label>`; }).join('')}</div><div class="buy" style="margin-top:6px"><b class="num" style="font:800 28px var(--display)">Total ${inr(fbtTot)}</b><button class="btn" style="flex:0 1 auto" data-act="fbtadd" ${chosen.length ? '' : 'disabled'}>Add ${chosen.length} to cart</button></div></div></section>` : '';
+  const rel = P.filter(x => x.id !== p.id && x.cat === p.cat).concat(P.filter(x => x.id !== p.id && x.cat !== p.cat && x.goals.some(g => p.goals.includes(g)))).slice(0, 6);
+  return `<div class="wrap">${crumbs([['Shop', '#shop'], [CATN[p.cat], '#cat-' + p.cat], [esc(p.name)]])}
+  <div class="pdp"><div><div class="gal-main" id="gal">${art(p, D.flav, D.view)}</div><div class="gal-th">${['Front', 'Facts', 'Details'].map((l, i) => `<button class="${i === D.view ? 'on' : ''}" data-act="pview" data-i="${i}" aria-label="${l} view">${art(p, D.flav, i)}</button>`).join('')}</div></div>
+  <div><div class="p-brand">${dietDot(p.diet)}<a href="#brand-${slug(p.brand)}">${esc(p.brand)}</a>${p.vegan ? '<span class="pill">Vegan</span>' : ''}</div><h1>${esc(p.name)}</h1>
+  <div class="pc-r"><a href="#" data-act="jump" data-t="s-rev">${stars(p.rating)}</a><span>${p.rating.toFixed(1)} · ${p.rc.toLocaleString('en-IN')} ratings</span></div>
+  <div class="price"><b class="num">${inr(u)}</b><s class="num">${inr(s.mrp)}</s><em>${Math.round((s.mrp - u) / s.mrp * 100)}% off</em></div><div class="note">Inclusive of all taxes${ps ? ` · ${inr(ps)} per serving` : ''}${D.sub ? ` · Subscriber price` : ''}</div>
+  <p style="margin-top:14px">${esc(p.desc)}</p><ul class="ul" style="margin-top:10px">${p.pts.map(x => `<li>${esc(x)}</li>`).join('')}</ul>
+  ${sizeHTML}${optHTML}${buyType}${buy}
+  ${!oos && p.stock <= 20 ? `<p class="warn" style="margin-top:10px;font-weight:600">Only ${p.stock} left in stock</p>` : ''}
+  <div class="opt"><h4>Delivery</h4><form class="pin" data-form="pin" novalidate><input id="pinp" inputmode="numeric" maxlength="6" placeholder="Enter pincode" aria-label="Pincode" value="${esc(S.pin)}"><button class="btn ghost" type="submit">Check</button></form><div class="note" style="margin-top:8px" id="pinres">${pinH}</div></div>
+  <div class="assure"><div>${ic('shield', 20)}<span>Batch-verified authenticity</span></div><div>${ic('truck', 20)}<span>Free shipping above ${inr(CFG.freeShip)}</span></div><div>${ic('refresh', 20)}<span>7-day return on sealed packs</span></div><div>${ic('lock', 20)}<span>UPI, cards, netbanking, COD, EMI</span></div></div>
+  <p class="note" style="margin-top:14px">FSSAI Lic. No. ${CFG.fssai}. Dietary supplement, not a medicine. Results vary and depend on diet, training and sleep.</p></div></div>
+  <div class="subnav" role="navigation" aria-label="Product sections">${[['s-nut', isCombo ? 'Included' : p.cat === 'accessories' ? 'Specs' : 'Nutrition'], ...(edible ? [['s-lab', 'Lab report']] : []), ['s-rev', 'Reviews'], ['s-qa', 'Q&A']].map(([t, l]) => `<button data-act="jump" data-t="${t}">${l}</button>`).join('')}</div>
+  ${nut}${lab}${fbt}${rev}${qa}
+  <section class="psec"><h2>You may also like</h2>${rail(rel)}</section><div style="height:40px"></div></div>
+  ${oos ? '' : `<div class="pdp-bar"><div><small class="muted">${esc(s.l)}</small><br><b class="num">${inr(u * D.qty)}</b></div><button class="btn" data-act="padd">${ic('cart', 18)} Add to cart</button></div>`}`;
+}
+function revRow(r, tag, pid, k) {
+  const hk = pid + k, hv = S.helpful[hk];
+  return `<div class="rev"><div class="rev-h">${stars(r.r)}<b>${esc(r.n)}</b><span>${esc(r.d)}</span><span class="pill ${tag === 'Sample review' ? 'sample' : ''}">${tag}</span></div><p>${esc(r.t)}</p>${r.img ? `<img src="${r.img}" alt="Photo from ${esc(r.n)}" width="96" height="96">` : ''}<div><button class="link" style="font-size:13px" data-act="helpful" data-k="${hk}">${hv ? 'Marked helpful ✓' : 'Helpful?'}</button></div></div>`;
+}
+
+/* ----- wishlist / compare ----- */
+function renderWishlist() {
+  const l = S.wish.map(byId).filter(Boolean);
+  return `<div class="wrap page">${crumbs([['Wishlist']])}<h1>Your wishlist</h1><div style="margin-top:20px">${l.length ? `<div class="pgrid">${l.map(card).join('')}</div>` : `<div class="empty"><h3>Nothing saved yet</h3><p>Tap the heart on any product to save it here.</p><a class="btn" href="#shop">Browse products</a></div>`}</div></div>`;
+}
+function renderCompare() {
+  const l = S.cmp.map(byId).filter(Boolean);
+  if (l.length < 1) return `<div class="wrap page">${crumbs([['Compare']])}<h1>Compare products</h1><div class="empty" style="margin-top:20px"><h3>Nothing to compare</h3><p>Tick “Compare” on up to 3 products in the shop.</p><a class="btn" href="#shop">Browse products</a></div></div>`;
+  const row = (lab, f) => `<tr><th scope="row">${lab}</th>${l.map(p => `<td>${f(p)}</td>`).join('')}</tr>`;
+  return `<div class="wrap page">${crumbs([['Compare']])}<h1>Compare products</h1><div class="tscroll cmp-t" style="margin-top:20px"><table class="t"><thead><tr><th></th>${l.map(p => `<th><button class="link" data-act="cmpbtn" data-id="${p.id}" style="font-size:12px">Remove</button></th>`).join('')}</tr></thead><tbody>
+  ${row('', p => `<div class="im">${art(p, 0, 0)}</div><a href="#product-${p.id}"><b>${esc(p.name)}</b></a>`)}
+  ${row('Brand', p => esc(p.brand))}${row('Price', p => `<b class="num">${inr(lowest(p).price)}</b> <s class="muted">${inr(lowest(p).mrp)}</s>`)}${row('Discount', p => pct(lowest(p)) + '%')}
+  ${row('Rating', p => `${stars(p.rating)} ${p.rating.toFixed(1)}`)}${row('Diet', p => `${dietDot(p.diet)} ${p.diet === 'veg' ? (p.vegan ? 'Vegan' : 'Vegetarian') : 'Non-vegetarian'}`)}
+  ${row('Key nutrient', p => esc(p.key[0] + ': ' + p.key[1]))}${row('Serving size', p => esc(p.ss || '–'))}${row('Servings (smallest pack)', p => p.sizes[0].sv || '–')}
+  ${row('Price per serving', p => { const x = lowest(p); return x.sv ? inr(x.price / x.sv) : '–'; })}${row('Pack sizes', p => p.sizes.map(z => esc(z.l)).join(', '))}${row('Options', p => p.flavs.length + ' ' + (p.opt === 'Colour' ? 'colours' : 'flavours'))}
+  ${row('', p => p.stock ? `<button class="btn sm" data-act="quick" data-id="${p.id}">Add to cart</button>` : '<span class="bad">Sold out</span>')}
+  </tbody></table></div></div>`;
+}
+
+/* ----- finder quiz ----- */
+const QS = [
+  { k: 'goal', q: 'What is your main goal?', o: [['muscle', 'Build muscle and strength'], ['weight', 'Lose weight and stay lean'], ['energy', 'More energy for workouts'], ['recovery', 'Recover faster between sessions']] },
+  { k: 'diet', q: 'How do you eat?', o: [['veg', 'Vegetarian (dairy is fine)'], ['vegan', 'Vegan, no dairy or eggs'], ['any', 'I eat everything']] },
+  { k: 'exp', q: 'How long have you been training?', o: [['new', 'Under 6 months'], ['mid', '6 months to 2 years'], ['pro', 'More than 2 years']] },
+  { k: 'bud', q: 'What is your budget for the first order?', o: [['low', 'Up to ₹3,000'], ['mid', '₹3,000 to ₹6,000'], ['high', 'No limit']] }
+];
+function recommend(a) {
+  const r = []; const add = (id, why) => { if (!r.find(x => x.id === id)) r.push({ id, why }); };
+  const prot = a.diet === 'vegan' ? 'root-plant' : (a.goal === 'weight' || (a.bud === 'high' && a.goal !== 'muscle')) ? 'peak-iso' : 'forge-whey';
+  add(prot, a.diet === 'vegan' ? 'Dairy-free protein to cover your daily target' : prot === 'peak-iso' ? 'Lean protein with minimal fat and sugar' : 'Good-value everyday protein');
+  if (a.goal === 'muscle' || (a.goal === 'energy' && a.exp !== 'new')) add('forge-creatine', 'The most studied supplement for strength and training output');
+  if (a.goal === 'energy' && a.exp !== 'new' && a.bud !== 'low') add('volt-ignite', 'Caffeine, citrulline and beta-alanine before hard sessions');
+  if (a.goal === 'energy' && a.exp === 'new') add('forge-multi', 'Fills small nutrient gaps while your training habit builds');
+  if (a.goal === 'recovery' && a.bud !== 'low') add('peak-eaa', 'Essential amino acids and electrolytes around training');
+  if (a.goal === 'recovery') add(a.diet === 'any' ? 'peak-omega' : 'root-d3k2', a.diet === 'any' ? 'EPA and DHA from fish oil as part of a recovery routine' : 'A daily vitamin D3 and K2 basic');
+  if (a.goal === 'weight' && a.bud !== 'low') add('peak-eaa', 'Low-calorie amino acids to sip while in a deficit');
+  if (a.goal === 'muscle' && a.bud === 'high' && a.exp !== 'new') add('forge-mass', 'Only if you struggle to eat enough calories');
+  add('aero-shaker', 'A leak-proof shaker for mixing');
+  let tot = 0; const out = []; const cap = a.bud === 'low' ? 3000 : a.bud === 'mid' ? 6000 : 1e9;
+  r.forEach(x => { const p = byId(x.id), pr = p.sizes[0].price; if (tot + pr <= cap || out.length === 0) { out.push(x); tot += pr; } });
+  return { out, tot };
+}
+function renderFinder() {
+  const done = Q.step >= QS.length;
+  if (!done) { const q = QS[Q.step]; return `<div class="wrap page"><div class="narrow" style="max-width:640px;margin:0 auto">${crumbs([['Goal finder']])}<h1>Find my stack</h1><p class="muted" style="margin:8px 0 18px">Question ${Q.step + 1} of ${QS.length}</p><div class="prog"><b style="width:${Q.step / QS.length * 100}%"></b></div><h2 style="font-size:30px">${q.q}</h2><div class="q-opt">${q.o.map(([v, l]) => `<button data-act="qa" data-v="${v}">${l}</button>`).join('')}</div>${Q.step ? `<button class="link" style="margin-top:16px" data-act="qback">Back</button>` : ''}</div></div>`; }
+  const { out, tot } = recommend(Q.a);
+  return `<div class="wrap page"><div style="max-width:760px;margin:0 auto">${crumbs([['Goal finder']])}<h1>Your starter stack</h1><p class="muted" style="margin:8px 0 18px">Based on your answers. Food and sleep come first, and a supplement only fills gaps.</p><div class="box">${out.map(x => { const p = byId(x.id); return `<div class="rec"><div class="im">${art(p, 0, 0)}</div><div><a href="#product-${p.id}"><b>${esc(p.name)}</b></a><div class="note">${esc(x.why)} · ${esc(p.sizes[0].l)}</div></div><b class="num">${inr(p.sizes[0].price)}</b></div>`; }).join('')}<div class="buy" style="justify-content:space-between"><b style="font:800 30px var(--display)" class="num">Total ${inr(tot)}</b><button class="btn" style="flex:0 1 auto" data-act="qaddall">Add all to cart</button></div></div><p class="note" style="margin-top:12px">Not medical advice. Speak to your doctor if you have a health condition, take medication, or are under 18.</p><button class="btn ghost" style="margin-top:14px" data-act="qreset">Start again</button></div></div>`;
+}
+
+/* ----- blog / info pages ----- */
+function renderBlog() { return `<div class="wrap page">${crumbs([['Blog']])}<h1>Guides</h1><p class="muted" style="margin:8px 0 22px">Plain-language answers before you spend.</p><div class="blog-grid">${BLOG.map(postCard).join('')}</div></div>`; }
+function renderPost(s) {
+  const b = BLOG.find(x => x.slug === s); if (!b) return notFound();
+  return `<div class="wrap page"><div class="narrow">${crumbs([['Blog', '#blog'], [esc(b.title)]])}<p class="muted">${b.tag} · ${b.mins} min read</p><h1 style="margin:8px 0 20px">${esc(b.title)}</h1><div class="prose">${b.body.map(x => x.startsWith('## ') ? `<h3>${esc(x.slice(3))}</h3>` : `<p>${esc(x)}</p>`).join('')}<p class="note">General information, not medical advice. Speak to a doctor or dietitian about your own needs.</p><a class="btn" href="#shop" style="justify-self:start">Shop supplements</a></div></div></div>`;
+}
+function renderFaq() { return `<div class="wrap page"><div class="narrow">${crumbs([['FAQ']])}<h1>Frequently asked questions</h1><div class="faq" style="margin-top:20px">${FAQ.map(([q, a]) => `<details><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join('')}</div><p class="muted" style="margin-top:20px">Still stuck? <a class="link" href="#contact">Contact us</a>.</p></div></div>`; }
+function renderAbout() { return `<div class="wrap page"><div class="narrow">${crumbs([['About']])}<h1>About ${STORE}</h1><div class="prose" style="margin-top:20px"><p>We sell sports nutrition and training gear for people who lift, run and play. Every product page shows the nutrition panel, ingredients, directions, warnings and batch details, so you can decide with the full label in front of you.</p><h3>What we stand for</h3><ul><li>Clear labels and honest claims. We do not promise fat loss or muscle gain from a tub.</li><li>Batch numbers you can verify on the product page.</li><li>Guest checkout. An account is optional.</li><li>Fast support on chat, WhatsApp and email.</li></ul><p class="note">FSSAI Lic. No. ${CFG.fssai} · GSTIN ${CFG.gst}</p></div></div></div>`; }
+function renderContact() { return `<div class="wrap page"><div class="narrow">${crumbs([['Contact']])}<h1>Contact us</h1><div class="two" style="margin-top:20px"><div class="prose"><p>Questions about an order, a product or a return? Send us a message and quote your order number if you have one.</p><p><b>Email</b><br>${CFG.email}</p><p><b>Phone</b><br>${CFG.phone}</p><p class="note">Mon–Sat, 10:00–18:00 IST.</p></div><form class="form-g" data-form="contact" novalidate><label class="fld"><span>Name</span><input id="c-n" autocomplete="name"></label><label class="fld"><span>Email</span><input id="c-e" type="email" autocomplete="email"></label><label class="fld"><span>Message</span><textarea id="c-m"></textarea></label><div class="note bad" id="c-err"></div><button class="btn" type="submit">Send message</button></form></div></div></div>`; }
+const POL = {
+  shipping: ['Shipping policy', ['Orders are packed within 1 working day.', `Delivery takes 1–3 working days in metro cities and 3–7 working days elsewhere. Remote pincodes can take up to 8 days.`, `Shipping is free on orders above ${inr(CFG.freeShip)}. Below that, a flat fee of ${inr(CFG.shipFee)} applies.`, `Cash on delivery is available up to ${inr(CFG.codMax)} for a ${inr(CFG.codFee)} handling fee, on serviceable pincodes.`, 'You receive tracking details by SMS and email once your order ships.']],
+  returns: ['Returns & refunds', ['Sealed, unopened packs can be returned within 7 days of delivery.', 'For safety, opened supplements cannot be returned or exchanged.', 'If your order arrives damaged, leaking or incorrect, contact us within 48 hours with photos of the pack and the shipping label.', 'Approved refunds go to the original payment method in 5–7 working days. For cash on delivery orders we refund to your bank account or UPI ID.', 'Subscription orders can be cancelled any time before the next dispatch.']],
+  privacy: ['Privacy policy', ['We collect the details you give us at checkout: name, contact details, address and order history.', 'We use them to deliver orders, send updates, provide support and, if you opt in, send offers.', 'We do not sell your personal data. We share it only with delivery partners and payment providers to complete your order.', 'You can ask us to access, correct or delete your data by emailing us.']],
+  terms: ['Terms of use & medical disclaimer', ['By using this site you agree to these terms.', 'Our products are dietary supplements. They are not medicines and are not intended to diagnose, treat, cure or prevent any disease.', 'Not for persons under 18. If you are pregnant, nursing, taking medication or have a medical condition, consult a doctor before use.', 'Product images are illustrative. Prices and availability can change without notice.', 'Results depend on your diet, training and sleep, and differ from person to person.']]
+};
+function renderPolicy(k) {
+  const cur = POL[k] ? k : 'shipping';
+  return `<div class="wrap page"><div class="narrow">${crumbs([['Policies']])}<div class="tabs">${Object.entries(POL).map(([x, [t]]) => `<a href="#policy-${x}"><button class="${x === cur ? 'on' : ''}" tabindex="-1">${t.split(' &')[0].split(' of')[0]}</button></a>`).join('')}</div><h1>${POL[cur][0]}</h1><div class="prose" style="margin-top:18px"><ul>${POL[cur][1].map(x => `<li>${x}</li>`).join('')}</ul><p class="note">Template policy text. Have it reviewed by your legal adviser before launch.</p></div></div></div>`;
+}
+
+/* ============ cart drawer ============ */
+function renderCart() {
+  const T = totals(), d = $('#cartd'), base = T.after, left = Math.max(0, CFG.freeShip - base), pc = Math.min(100, base / CFG.freeShip * 100);
+  d.innerHTML = `<div class="dr-h"><h3>Your cart (${T.count})</h3><button class="icon-btn" data-act="closeall" aria-label="Close cart">${ic('x')}</button></div>
+  <div class="dr-b">${T.count === 0 ? `<div class="empty" style="border:0"><h3>Your cart is empty</h3><p>Add a protein, creatine or a shaker to get started.</p><a class="btn" href="#shop" data-act="closeall">Shop now</a></div>` : `
+    <div class="ship-bar">${left > 0 ? `Add <b>${inr(left)}</b> more for free shipping` : '<b class="good">You have free shipping</b>'}<i><b style="width:${pc}%"></b></i></div>
+    <ul class="clean">${T.lines.map((l, i) => `<li class="ln"><a class="im" href="#product-${l.pid}" data-act="closeall">${art(l.p, l.flav, 0)}</a><div><h5>${esc(l.p.name)}</h5><small>${esc(vtxt(l.p, l.size, l.flav))}</small>${l.p.cat !== 'combos' && l.p.cat !== 'accessories' ? `<label class="note" style="display:flex;gap:6px;align-items:center;margin-top:4px"><input type="checkbox" data-act="linesub" data-i="${i}" ${l.sub ? 'checked' : ''}> Subscribe &amp; save ${CFG.subDisc}%</label>` : ''}<div class="r"><div class="qty"><button data-act="lqty" data-i="${i}" data-d="-1" aria-label="Decrease">${ic('minus', 14)}</button><span class="num">${l.qty}</span><button data-act="lqty" data-i="${i}" data-d="1" aria-label="Increase">${ic('plus', 14)}</button></div><b class="num">${inr(l.u * l.qty)}</b></div><button class="rm" data-act="lrm" data-i="${i}">Remove</button></div></li>`).join('')}</ul>
+    ${couponBox(T)}`}</div>
+  ${T.count ? `<div class="dr-f"><div class="tot"><div><span>Subtotal</span><span class="num">${inr(T.sub)}</span></div>${T.cd ? `<div class="g"><span>Coupon ${esc(S.coupon)}</span><span class="num">− ${inr(T.cd)}</span></div>` : ''}<div><span>Shipping</span><span class="num">${T.ship ? inr(T.ship) : 'Free'}</span></div><div class="big"><span>Total</span><span class="num">${inr(T.total)}</span></div></div><a class="btn block" href="#checkout" data-act="closeall">Checkout as guest or sign in</a><span class="note" style="text-align:center">No account needed. Includes GST.</span></div>` : ''}`;
+}
+function couponBox(T) {
+  return `<form class="cpn" data-form="coupon" novalidate><input id="cp-in" placeholder="Coupon code" aria-label="Coupon code" value="${esc(S.coupon || '')}" autocomplete="off"><button class="btn ghost" type="submit">${S.coupon ? 'Update' : 'Apply'}</button></form><div class="note ${T.cmsg ? 'warn' : ''}" id="cp-msg" style="margin-top:6px">${T.cmsg || (S.coupon && T.cd ? `${S.coupon} applied. You save ${inr(T.cd)}.` : S.coupon === 'FREESHIP' && T.ship === 0 ? 'FREESHIP applied.' : '')}</div><div class="chips">${Object.keys(COUPONS).map(k => `<button type="button" data-act="coupon" data-c="${k}" title="${esc(COUPONS[k].label)}">${k}</button>`).join('')}</div>${S.coupon ? `<button class="link note" type="button" data-act="coupon" data-c="">Remove coupon</button>` : ''}`;
+}
+function applyCoupon(code) {
+  code = (code || '').trim().toUpperCase();
+  if (!code) { S.coupon = null; save(); cartChanged(); return 'Coupon removed'; }
+  const c = COUPONS[code]; if (!c) return 'That coupon code is not valid';
+  S.coupon = code; save(); cartChanged();
+  const T = totals(); return T.cmsg ? T.cmsg : `${code} applied`;
+}
+function openCart() { renderCart(); $('#cartd').classList.add('open'); $('#cartd').setAttribute('aria-hidden', 'false'); $('#scrim').classList.add('on'); }
+function closeAll() {
+  $('#cartd').classList.remove('open'); $('#cartd').setAttribute('aria-hidden', 'true'); $('#scrim').classList.remove('on');
+  const f = $('#filters'); if (f) f.classList.remove('open'); if (V) V.fo = false;
+  $('#chat').classList.remove('open');
+}
+
+/* ============ checkout ============ */
+const STATES = ['Andhra Pradesh', 'Assam', 'Bihar', 'Chandigarh', 'Chhattisgarh', 'Delhi', 'Goa', 'Gujarat', 'Haryana', 'Himachal Pradesh', 'Jammu and Kashmir', 'Jharkhand', 'Karnataka', 'Kerala', 'Madhya Pradesh', 'Maharashtra', 'Odisha', 'Punjab', 'Rajasthan', 'Tamil Nadu', 'Telangana', 'Uttar Pradesh', 'Uttarakhand', 'West Bengal', 'Other state / UT'];
+const BANKS = ['State Bank of India', 'HDFC Bank', 'ICICI Bank', 'Axis Bank', 'Kotak Mahindra Bank', 'Punjab National Bank', 'Bank of Baroda', 'Yes Bank'];
+const emi = (P0, m) => { const r = .14 / 12; return Math.round(P0 * r * Math.pow(1 + r, m) / (Math.pow(1 + r, m) - 1)); };
+function renderCheckout() {
+  if (!S.cart.length) return `<div class="wrap page">${crumbs([['Checkout']])}<div class="empty"><h2>Your cart is empty</h2><p>Add something to your cart to check out.</p><a class="btn" href="#shop">Shop now</a></div></div>`;
+  const c = S.co, u = S.user, pay = c.pay || 'upi', T = totals({ checkout: true }), pi = pinInfo(c.pin || '');
+  const fld = (id, lab, v, ex = '') => `<label class="fld" id="f-${id}"><span>${lab}</span><input id="${id}" value="${esc(v || '')}" ${ex}><span class="err" id="e-${id}"></span></label>`;
+  const emiOk = T.total >= 3000, codOk = T.total <= CFG.codMax && (!pi || pi.cod);
+  const payOpt = (k, lab, sub, dis) => `<label class="${pay === k ? 'on' : ''}" ${dis ? 'style="opacity:.55"' : ''}><div class="hd"><span><input type="radio" name="pay" data-act="pay" value="${k}" ${pay === k ? 'checked' : ''} ${dis ? 'disabled' : ''}>${lab}</span>${dis ? `<span class="note">${dis}</span>` : ''}</div>${pay === k ? `<div class="sub">${sub}</div>` : ''}</label>`;
+  const cardF = `${fld('cn', 'Card number', c.cn, 'inputmode="numeric" autocomplete="cc-number" placeholder="1234 5678 9012 3456" maxlength="19"')}<div class="cols2">${fld('cx', 'Expiry (MM/YY)', c.cx, 'inputmode="numeric" autocomplete="cc-exp" placeholder="MM/YY" maxlength="5"')}${fld('cv', 'CVV', '', 'inputmode="numeric" type="password" autocomplete="cc-csc" maxlength="4"')}</div>${fld('cname', 'Name on card', c.cname, 'autocomplete="cc-name"')}`;
+  const subs = {
+    upi: `${fld('upi', 'UPI ID', c.upi, 'placeholder="name@bank" autocomplete="off"')}<div class="chips" style="margin:0">${['@okhdfcbank', '@ybl', '@paytm', '@oksbi'].map(x => `<button type="button" data-act="upisfx" data-s="${x}">${x}</button>`).join('')}</div>`,
+    card: cardF,
+    nb: `<label class="fld" id="f-bank"><span>Choose your bank</span><select id="bank"><option value="">Select bank</option>${BANKS.map(b => `<option ${c.bank === b ? 'selected' : ''}>${b}</option>`).join('')}</select><span class="err" id="e-bank"></span></label>`,
+    cod: `<p class="note">Pay in cash or UPI when your order arrives. A handling fee of ${inr(CFG.codFee)} applies.</p>`,
+    emi: `<div class="fld"><span>Choose a tenure (14% p.a., indicative)</span><div class="seg">${[3, 6, 9, 12].map(m => `<button type="button" class="${(c.emi || 6) === m ? 'on' : ''}" data-act="emim" data-m="${m}">${m} months<small>${inr(emi(T.total, m))}/month</small></button>`).join('')}</div></div>${cardF}`
+  };
+  return `<div class="wrap">${crumbs([['Cart', '#shop'], ['Checkout']])}<h1 style="margin-bottom:20px">Checkout</h1><form class="co" id="co" data-form="checkout" novalidate><div>
+  <section class="step"><h3>1. Contact</h3>${u ? `<div class="box" style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center"><span>Signed in as <b>${esc(u.name || 'Member')}</b> · +91 ${esc(u.phone)}</span><button type="button" class="link" data-act="logout">Sign out</button></div>` : `<div class="seg2" role="tablist"><button type="button" class="${(c.mode || 'guest') === 'guest' ? 'on' : ''}" data-act="comode" data-m="guest">Guest checkout</button><button type="button" class="${c.mode === 'otp' ? 'on' : ''}" data-act="comode" data-m="otp">Login with mobile OTP</button></div>
+    ${c.mode === 'otp' ? `<div id="otpbox">${otpHTML('checkout')}</div>` : `<div class="cols2">${fld('em', 'Email', c.em, 'type="email" autocomplete="email"')}${fld('ph', 'Mobile number', c.ph, 'inputmode="numeric" maxlength="10" autocomplete="tel-national" placeholder="10-digit number"')}</div><p class="note" style="margin-top:8px">No password or account needed. You can create one after your order.</p>`}`}</section>
+  <section class="step"><h3>2. Delivery address</h3><div class="form-g">${fld('nm', 'Full name', c.nm || (u && u.name), 'autocomplete="name"')}${fld('ad', 'Address (house no., street, area)', c.ad, 'autocomplete="street-address"')}<div class="cols2">${fld('pin', 'Pincode', c.pin || S.pin, 'inputmode="numeric" maxlength="6" autocomplete="postal-code"')}${fld('city', 'City', c.city, 'autocomplete="address-level2"')}</div><label class="fld" id="f-st"><span>State</span><select id="st" autocomplete="address-level1"><option value="">Select state</option>${STATES.map(s => `<option ${c.st === s ? 'selected' : ''}>${s}</option>`).join('')}</select><span class="err" id="e-st"></span></label><div class="note" id="pinmsg">${pi ? `<span class="good">Delivery by ${pi.from} – ${pi.to}</span>` : ''}</div></div></section>
+  <section class="step"><h3>3. Payment</h3><div class="pay">${payOpt('upi', 'UPI', subs.upi)}${payOpt('card', 'Credit / debit card', subs.card)}${payOpt('nb', 'Netbanking', subs.nb)}${payOpt('emi', 'EMI', subs.emi, emiOk ? '' : 'Orders above ₹3,000')}${payOpt('cod', 'Cash on delivery', subs.cod, codOk ? '' : (T.total > CFG.codMax ? `Up to ${inr(CFG.codMax)}` : 'Not available for this pincode'))}</div><div class="demo">${ic('lock', 14)} Demo store: no real payment is taken and no card details leave your browser.</div></section>
+  <button class="btn block" type="submit" style="min-height:52px;font-size:17px">Place order · ${inr(T.total)}</button><p class="note" style="margin-top:8px;text-align:center">By placing the order you agree to our <a class="link" href="#policy-terms">terms</a> and <a class="link" href="#policy-returns">return policy</a>.</p></div>
+  <aside class="co-sum"><div class="step" id="co-sum"></div></aside></form></div>`;
+}
+function renderSummary() {
+  const el = $('#co-sum'); if (!el) return; const T = totals({ checkout: true }), u = S.user;
+  el.innerHTML = `<h3 style="margin-bottom:10px">Order summary</h3><ul class="clean ord-sum">${T.lines.map(l => `<li><div class="im">${art(l.p, l.flav, 0)}</div><div><b>${esc(l.p.name)}</b><div class="note">${esc(vtxt(l.p, l.size, l.flav))} × ${l.qty}${l.sub ? ' · Subscription' : ''}</div></div><span class="num">${inr(l.u * l.qty)}</span></li>`).join('')}</ul>
+  ${couponBox(T)}${u && u.points > 0 ? `<label class="fo" style="margin-top:10px"><input type="checkbox" data-act="redeem" ${S.redeem ? 'checked' : ''}><span>Use reward points (${u.points} available, up to 20%)</span></label>` : ''}
+  <div class="tot" style="margin-top:14px"><div><span>Subtotal</span><span class="num">${inr(T.sub)}</span></div>${T.cd ? `<div class="g"><span>Coupon</span><span class="num">− ${inr(T.cd)}</span></div>` : ''}${T.pts ? `<div class="g"><span>Reward points</span><span class="num">− ${inr(T.pts)}</span></div>` : ''}<div><span>Shipping</span><span class="num">${T.ship ? inr(T.ship) : 'Free'}</span></div>${T.cod ? `<div><span>COD handling fee</span><span class="num">${inr(T.cod)}</span></div>` : ''}<div class="big"><span>Total</span><span class="num">${inr(T.total)}</span></div><div class="note" style="display:flex;justify-content:space-between"><span>Includes GST (18%)</span><span class="num">${inr(T.gst)}</span></div>${T.save > 0 ? `<div class="g"><b>You save ${inr(T.save)} on this order</b></div>` : ''}</div>`;
+}
+function otpHTML(ctx) {
+  if (OTP.verified) return '';
+  return `<div class="form-g"><div class="fld"><span>Mobile number</span><div class="verify" style="margin:0"><input id="otp-ph" inputmode="numeric" maxlength="10" placeholder="10-digit number" value="${esc(OTP.phone || S.co.ph || '')}" style="text-transform:none"><button type="button" class="btn" data-act="otpsend" data-ctx="${ctx}">${OTP.code ? 'Resend OTP' : 'Send OTP'}</button></div><span class="err" id="e-otp-ph"></span></div>${OTP.code ? `<div class="demo">Demo mode: no SMS is sent. Your one-time code is <b>${OTP.code}</b></div><div class="fld"><span>Enter 6-digit OTP</span><div class="verify" style="margin:0"><input id="otp-c" inputmode="numeric" maxlength="6" placeholder="••••••" style="text-transform:none"><button type="button" class="btn dark" data-act="otpverify" data-ctx="${ctx}">Verify</button></div><span class="err" id="e-otp-c"></span></div>` : ''}</div>`;
+}
+const err = (id, m) => { const e = $('#e-' + id), f = $('#f-' + id); if (e) e.textContent = m || ''; if (f) f.classList.toggle('bad', !!m); return !m; };
+const luhn = n => { let s = 0, d = false; for (let i = n.length - 1; i >= 0; i--) { let x = +n[i]; if (d) { x *= 2; if (x > 9) x -= 9; } s += x; d = !d; } return s % 10 === 0; };
+function placeOrder() {
+  const c = S.co, pay = c.pay || 'upi', g = id => ($('#' + id) ? $('#' + id).value.trim() : ''); let ok = true, first = null;
+  const chk = (id, m) => { const r = err(id, m); if (!r && !first) first = id; ok = ok && r; };
+  const u = S.user;
+  if (!u) {
+    if (c.mode === 'otp') { if (!OTP.verified) { err('otp-ph', 'Verify your mobile number with the OTP'); ok = false; first = first || 'otp-ph'; } }
+    else { chk('em', /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(g('em')) ? '' : 'Enter a valid email'); chk('ph', /^[6-9]\d{9}$/.test(g('ph')) ? '' : 'Enter a valid 10-digit mobile number'); }
+  }
+  chk('nm', g('nm').length >= 2 ? '' : 'Enter your full name'); chk('ad', g('ad').length >= 8 ? '' : 'Enter your full address');
+  chk('pin', pinInfo(g('pin')) ? '' : 'Enter a valid 6-digit pincode'); chk('city', g('city').length >= 2 ? '' : 'Enter your city'); chk('st', g('st') ? '' : 'Select your state');
+  if (pay === 'upi') chk('upi', /^[\w.\-]{2,}@[a-zA-Z]{2,}$/.test(g('upi')) ? '' : 'Enter a valid UPI ID like name@bank');
+  if (pay === 'card' || pay === 'emi') {
+    const n = g('cn').replace(/\s/g, ''); chk('cn', /^\d{13,19}$/.test(n) && luhn(n) ? '' : 'Enter a valid card number');
+    const m = g('cx').match(/^(\d{2})\/(\d{2})$/); const now = new Date(); const okx = m && +m[1] >= 1 && +m[1] <= 12 && (2000 + +m[2] > now.getFullYear() || (2000 + +m[2] === now.getFullYear() && +m[1] >= now.getMonth() + 1));
+    chk('cx', okx ? '' : 'Enter a valid expiry'); chk('cv', /^\d{3,4}$/.test(g('cv')) ? '' : 'Enter the CVV'); chk('cname', g('cname').length >= 2 ? '' : 'Enter the name on the card');
+  }
+  if (pay === 'nb') chk('bank', g('bank') ? '' : 'Select your bank');
+  const T = totals({ checkout: true });
+  if (pay === 'cod' && (T.total > CFG.codMax || (pinInfo(g('pin')) && !pinInfo(g('pin')).cod))) { toast('Cash on delivery is not available for this order'); ok = false; }
+  if (!ok) { if (first && $('#' + first)) $('#' + first).focus(); toast('Please fix the highlighted fields'); return; }
+  const contact = u ? { name: g('nm'), email: u.email || '', phone: u.phone } : (c.mode === 'otp' ? { name: g('nm'), email: '', phone: OTP.phone } : { name: g('nm'), email: g('em'), phone: g('ph') });
+  const id = 'FG-' + (S.seq++);
+  const order = { id, ts: Date.now(), items: T.lines.map(l => ({ pid: l.pid, size: l.size, flav: l.flav, qty: l.qty, sub: l.sub, price: l.u })), t: { sub: T.sub, cd: T.cd, pts: T.pts, ship: T.ship, cod: T.cod, total: T.total, gst: T.gst }, contact, addr: { name: g('nm'), line: g('ad'), city: g('city'), state: g('st'), pin: g('pin') }, pay: { upi: 'UPI', card: 'Card', nb: 'Netbanking', cod: 'Cash on delivery', emi: 'EMI' }[pay], stage: 0, coupon: S.coupon };
+  $('#modal').hidden = false; $('#modal').innerHTML = `<div style="text-align:center"><div class="spin"></div><b>Processing your order…</b><p class="note" style="margin-top:6px">Demo mode: no money is moved.</p></div>`;
+  setTimeout(() => {
+    S.orders.unshift(order);
+    order.items.forEach(it => { if (it.sub) S.subs.push({ id: id + '-' + it.pid, oid: id, pid: it.pid, size: it.size, flav: it.flav, qty: it.qty, next: Date.now() + 30 * DAY, on: true, phone: contact.phone }); });
+    if (S.user) { S.user.points = Math.max(0, S.user.points - T.pts) + Math.floor(T.total * .05); S.user.address = order.addr; }
+    S.cart = []; S.coupon = null; S.redeem = false; S.co = { mode: 'guest' }; OTP = {}; save();
+    $('#modal').hidden = true; $('#modal').innerHTML = ''; cartChanged(); location.hash = '#order-' + id;
+  }, 1100);
+}
+
+/* ----- order confirmation + account creation prompt ----- */
+function renderOrderDone(id) {
+  const o = S.orders.find(x => x.id === id); if (!o) return notFound();
+  const linked = S.user && S.user.phone === o.contact.phone, earn = Math.floor(o.t.total * .05);
+  return `<div class="wrap page"><div style="max-width:720px;margin:0 auto"><div class="ok-ic">${ic('check', 34)}</div><h1>Order placed</h1><p class="muted" style="margin:8px 0 18px">Order <b>${o.id}</b> is confirmed. We will send updates to ${o.contact.email ? esc(o.contact.email) + ' and ' : ''}+91 ${esc(o.contact.phone)}.</p>
+  <div class="box"><ul class="clean ord-sum">${o.items.map(it => { const p = byId(it.pid); return `<li><div class="im">${art(p, it.flav, 0)}</div><div><b>${esc(p.name)}</b><div class="note">${esc(vtxt(p, it.size, it.flav))} × ${it.qty}</div></div><span class="num">${inr(it.price * it.qty)}</span></li>`; }).join('')}</ul><div class="tot" style="margin-top:10px"><div class="big"><span>Total paid (${esc(o.pay)})</span><span class="num">${inr(o.t.total)}</span></div></div><p class="note" style="margin-top:10px">Deliver to ${esc(o.addr.name)}, ${esc(o.addr.line)}, ${esc(o.addr.city)}, ${esc(o.addr.state)} ${esc(o.addr.pin)}. Estimated delivery ${(() => { const i = pinInfo(o.addr.pin); return i ? i.from + ' – ' + i.to : 'in 3–7 days'; })()}.</p></div>
+  ${linked ? `<div class="box" style="margin-top:14px"><b>${earn} reward points added to your account.</b></div>` : `<div class="box" id="accprompt" style="margin-top:14px"><h3>Create an account? (optional)</h3><p class="muted" style="margin:8px 0">Save your address, track orders in one place and earn <b>${earn} reward points</b> from this order. It takes one OTP, no password.</p>${OTP.verified ? '' : `<div id="otpbox" data-oid="${o.id}">${OTP.code && OTP.phone === o.contact.phone ? otpHTML('order') : `<button class="btn" data-act="otpstart" data-ph="${esc(o.contact.phone)}" data-oid="${o.id}">Create account with +91 ${esc(o.contact.phone)}</button>`}</div>`}</div>`}
+  <div class="buy" style="margin-top:18px"><a class="btn" style="flex:0 1 auto" href="#track">Track order</a><a class="btn ghost" style="flex:0 1 auto" href="#shop">Continue shopping</a></div></div></div>`;
+}
+
+/* ----- account ----- */
+function logout() { S.user = null; S.redeem = false; OTP = {}; save(); cartChanged(); render(false); toast('Signed out'); }
+function loginUser(phone, oid) {
+  const ex = S.users && S.users[phone]; const o = oid && S.orders.find(x => x.id === oid);
+  S.users = S.users || {};
+  const u = S.users[phone] || { phone, name: o ? o.contact.name : '', email: o ? o.contact.email : '', points: 0, ref: 'FORGE' + phone.slice(-4) + 'X', address: o ? o.addr : null };
+  if (!ex && o) u.points += Math.floor(o.t.total * .05);
+  S.users[phone] = u; S.user = u; save(); OTP = { verified: true, phone }; cartChanged();
+}
+function renderAccount() {
+  const u = S.user;
+  if (!u) return `<div class="wrap page"><div style="max-width:480px;margin:0 auto">${crumbs([['Account']])}<h1>Sign in</h1><p class="muted" style="margin:8px 0 18px">Use your mobile number. We send a one-time code, no password to remember. An account is optional: you can always check out as a guest.</p><div class="box" id="otpbox">${otpHTML('account')}</div><ul class="ul note" style="margin-top:16px"><li>Order history and easy tracking</li><li>Saved address for faster checkout</li><li>Reward points: 5% back on every order</li><li>Manage Subscribe &amp; Save deliveries</li></ul></div></div>`;
+  const mine = S.orders.filter(o => o.contact.phone === u.phone), subs = (S.subs || []).filter(x => x.phone === u.phone), tab = ACC.tab;
+  const pane = {
+    orders: mine.length ? mine.map(o => `<div class="box" style="margin-bottom:12px"><div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap"><b>${o.id}</b><span class="muted">${fmtLong(o.ts)}</span></div><div class="note" style="margin:6px 0">${o.items.map(it => esc(byId(it.pid).name) + ' × ' + it.qty).join(', ')}</div><div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap"><b class="num">${inr(o.t.total)}</b><span class="pill">${STAGES[o.stage || 0][0]}</span><a class="link" href="#track" data-act="trackfill" data-id="${o.id}" data-ph="${esc(o.contact.phone)}">Track</a></div></div>`).join('') : `<div class="empty"><h3>No orders yet</h3><p>Orders placed with this number appear here.</p><a class="btn" href="#shop">Shop now</a></div>`,
+    rewards: `<div class="box"><div class="muted">Reward points</div><div style="font:900 56px var(--display)" class="num">${u.points}</div><p class="note">1 point = ₹1. Earn 5% of every order back and redeem up to 20% of an order at checkout.</p></div><div class="box" style="margin-top:12px"><h4>Refer a friend</h4><p class="note" style="margin:8px 0">Share your code. Referral rewards can be added in your store settings.</p><div class="verify"><input readonly value="${esc(u.ref)}" aria-label="Referral code"><button class="btn" data-act="copy" data-t="${esc(u.ref)}">${ic('copy', 16)} Copy</button></div></div>`,
+    subs: subs.length ? subs.map(x => { const p = byId(x.pid); return `<div class="box" style="margin-bottom:12px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center"><div><b>${esc(p.name)}</b><div class="note">${esc(vtxt(p, x.size, x.flav))} × ${x.qty} · ${x.on ? 'Next delivery ' + fmtDate(x.next) : 'Cancelled'}</div></div>${x.on ? `<div style="display:flex;gap:8px"><button class="btn ghost sm" data-act="subskip" data-id="${x.id}">Skip next</button><button class="btn ghost sm" data-act="subcancel" data-id="${x.id}">Cancel</button></div>` : ''}</div>`; }).join('') : `<div class="empty"><h3>No subscriptions</h3><p>Choose “Subscribe &amp; save” on a product page for ${CFG.subDisc}% off monthly deliveries.</p><a class="btn" href="#shop">Browse products</a></div>`,
+    profile: `<form class="form-g" data-form="profile" style="max-width:460px" novalidate><label class="fld"><span>Name</span><input id="pf-n" value="${esc(u.name || '')}" autocomplete="name"></label><label class="fld"><span>Email</span><input id="pf-e" type="email" value="${esc(u.email || '')}" autocomplete="email"></label><div class="fld"><span>Mobile</span><input value="+91 ${esc(u.phone)}" readonly></div>${u.address ? `<div class="box"><b>Saved address</b><p class="note">${esc(u.address.name)}, ${esc(u.address.line)}, ${esc(u.address.city)}, ${esc(u.address.state)} ${esc(u.address.pin)}</p></div>` : ''}<div><button class="btn" type="submit">Save changes</button> <button class="btn ghost" type="button" data-act="logout">Sign out</button></div></form>`
+  }[tab];
+  return `<div class="wrap page">${crumbs([['Account']])}<h1>Hello${u.name ? ', ' + esc(u.name.split(' ')[0]) : ''}</h1><div class="tabs" style="margin-top:18px" role="tablist">${[['orders', 'Orders'], ['rewards', 'Rewards'], ['subs', 'Subscriptions'], ['profile', 'Profile']].map(([k, l]) => `<button class="${tab === k ? 'on' : ''}" data-act="acctab" data-k="${k}">${l}</button>`).join('')}</div>${pane}</div>`;
+}
+
+/* ----- order tracking ----- */
+const STAGES = [['Order placed', 'We have received your order'], ['Packed', 'Your items are packed and ready'], ['Shipped', 'Handed to the courier'], ['Out for delivery', 'Arriving today'], ['Delivered', 'Order delivered']];
+let TR = { id: '', ph: '', res: null };
+function trackHTML(o) {
+  const i = pinInfo(o.addr.pin);
+  return `<div class="box" style="margin-top:20px"><div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px"><b>Order ${o.id}</b><span class="muted">Placed ${fmtLong(o.ts)}</span></div><div class="timeline">${STAGES.map(([t, d], k) => `<div class="${k <= (o.stage || 0) ? 'done' : ''}"><i>${k <= (o.stage || 0) ? ic('check', 14) : ''}</i><span><b>${t}</b><small>${d}</small></span></div>`).join('')}</div><p class="note">${(o.stage || 0) >= 4 ? 'Delivered.' : `Expected by ${i ? i.to : 'soon'}.`} Items: ${o.items.map(it => esc(byId(it.pid).name) + ' × ' + it.qty).join(', ')}</p>${(o.stage || 0) < 4 ? `<button class="btn ghost sm" style="margin-top:10px" data-act="advance" data-id="${o.id}">Demo: move to next status</button>` : ''}</div>`;
+}
+function renderTrack() {
+  return `<div class="wrap page"><div style="max-width:620px;margin:0 auto">${crumbs([['Track order']])}<h1>Track your order</h1><p class="muted" style="margin:8px 0 18px">Enter your order ID and the mobile number used at checkout. Try the demo order <b>FG-100001</b> with <b>9999999999</b>.</p><form class="form-g" data-form="track" novalidate><label class="fld"><span>Order ID</span><input id="tr-id" placeholder="FG-100001" value="${esc(TR.id)}" autocomplete="off" style="text-transform:uppercase"></label><label class="fld"><span>Mobile number</span><input id="tr-ph" inputmode="numeric" maxlength="10" value="${esc(TR.ph)}"></label><div class="note bad" id="tr-err"></div><div><button class="btn" type="submit">Track order</button></div></form><div id="tr-res">${TR.res ? trackHTML(TR.res) : ''}</div></div></div>`;
+}
+
+/* ============ chat, popup, footer ============ */
+const CHAT = { 'Where is my order?': 'Open Track order from the footer and enter your order ID and mobile number.', 'How long is delivery?': 'Usually 1–3 working days in metros and 3–7 elsewhere. Enter your pincode on a product page for a date.', 'Is it genuine?': 'Every pack has a batch number. Use the Verify your pack box on the product page to check it.', 'Can I return it?': 'Sealed, unopened packs can be returned within 7 days. Opened supplements cannot be returned for safety.', 'Do I need an account?': 'No. Guest checkout works with just an email and mobile number.' };
+function drawChat() {
+  $('#fab').innerHTML = ic('chat', 26);
+  $('#chat').innerHTML = `<div class="chat-h"><b>Help &amp; support</b><button class="icon-btn" style="border:0;background:none;color:inherit;width:32px;height:32px" data-act="chat" aria-label="Close chat">${ic('x', 18)}</button></div><div class="chat-b" id="chat-b"><div class="msg b">Hi! Ask a quick question or pick one below.</div></div><div class="qk">${Object.keys(CHAT).map(q => `<button data-act="chatq" data-q="${esc(q)}">${q}</button>`).join('')}</div>${CFG.wa ? `<div style="padding:0 12px 12px"><a class="btn block sm" href="https://wa.me/${CFG.wa}" target="_blank" rel="noopener">Chat on WhatsApp</a></div>` : `<div style="padding:0 12px 12px" class="note">More help: <a class="link" href="#contact">Contact us</a></div>`}`;
+}
+function drawFooter() {
+  $('#foot').innerHTML = `<div class="wrap"><div class="foot-g"><div><div class="logo" style="color:var(--accent)"><svg viewBox="0 0 32 32" aria-hidden="true" style="width:30px;height:30px;fill:currentColor"><rect x="2" y="10" width="4" height="12" rx="1.5"/><rect x="7" y="7" width="4" height="18" rx="1.5"/><rect x="11" y="14" width="10" height="4"/><rect x="21" y="7" width="4" height="18" rx="1.5"/><rect x="26" y="10" width="4" height="12" rx="1.5"/></svg><div><span style="color:var(--on-band)">FORGE</span></div></div><p style="margin-top:12px">Sports nutrition and training gear with full labels and batch details on every page.</p><p style="margin-top:10px">FSSAI Lic. No. ${CFG.fssai}<br>GSTIN ${CFG.gst}</p></div>
+  <div><h4>Shop</h4><ul>${CATS.slice(0, 6).map(([k, l]) => `<li><a href="#cat-${k}">${l}</a></li>`).join('')}<li><a href="#cat-accessories">Accessories</a></li></ul></div>
+  <div><h4>Help</h4><ul><li><a href="#track">Track order</a></li><li><a href="#faq">FAQ</a></li><li><a href="#contact">Contact</a></li><li><a href="#finder">Goal finder</a></li><li><a href="#blog">Guides</a></li><li><a href="#about">About us</a></li></ul></div>
+  <div><h4>Policies</h4><ul><li><a href="#policy-shipping">Shipping</a></li><li><a href="#policy-returns">Returns &amp; refunds</a></li><li><a href="#policy-privacy">Privacy</a></li><li><a href="#policy-terms">Terms &amp; disclaimer</a></li></ul><p style="margin-top:14px">UPI · Cards · Netbanking · EMI · COD</p></div></div>
+  <div class="fine"><span>These statements have not been evaluated as medical advice. Our products are dietary supplements, not medicines. Not for persons under 18. Consult your doctor if you are pregnant, nursing, on medication or have a medical condition. Results vary.</span><span>Demo storefront: products, prices, reviews and lab reports are placeholder content, and orders, OTP and payments are simulated in your browser.</span><span>© ${new Date().getFullYear()} ${STORE}</span></div></div>`;
+}
+function showPopup() {
+  if (S.sawPop || $('#modal').hidden === false) return; S.sawPop = true; save();
+  $('#modal').hidden = false; $('#modal').innerHTML = `<div role="dialog" aria-modal="true" aria-label="Welcome offer"><button class="x" data-act="mclose" aria-label="Close">${ic('x')}</button><h2>Wait! 10% off your first order</h2><p class="muted" style="margin:10px 0 14px">Join the list and get a code for 10% off (up to ₹300) on orders above ₹499.</p><form class="verify" data-form="popup" novalidate><input id="pop-e" type="email" placeholder="you@example.com" aria-label="Email" style="text-transform:none"><button class="btn" type="submit">Get code</button></form><div class="note bad" id="pop-err"></div></div>`;
+  setTimeout(() => $('#pop-e') && $('#pop-e').focus(), 50);
+}
+
+/* ============ forms ============ */
+const emailOk = v => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
+const FORMS = {
+  news(f) { const v = $('#news-e').value.trim(); if (!emailOk(v)) { $('#news-err').textContent = 'Enter a valid email address'; return; } $('#news-err').textContent = ''; $('#news-e').value = ''; toast('Subscribed. Thanks for joining!'); },
+  popup() { const v = $('#pop-e').value.trim(); if (!emailOk(v)) { $('#pop-err').textContent = 'Enter a valid email address'; return; } S.coupon = 'WELCOME10'; save(); cartChanged(); $('#modal').innerHTML = `<div><button class="x" data-act="mclose" aria-label="Close">${ic('x')}</button><h2>Your code</h2><p class="muted" style="margin:10px 0">Use it at checkout. We have also saved it to your cart.</p><div class="verify"><input readonly value="WELCOME10" aria-label="Coupon code"><button class="btn" data-act="copy" data-t="WELCOME10">${ic('copy', 16)} Copy</button></div><a class="btn block" href="#shop" data-act="mclose" style="margin-top:14px">Start shopping</a></div>`; },
+  alert() { const v = $('#al-e').value.trim(); if (!emailOk(v)) { $('#al-err').textContent = 'Enter a valid email address'; return; } if (!S.alerts.find(a => a.e === v && a.p === D.pid)) S.alerts.push({ e: v, p: D.pid }); save(); $('#al-err').textContent = ''; $('#al-e').value = ''; toast('We will email you when it is back'); },
+  pin() { const v = $('#pinp').value.trim(), i = pinInfo(v); S.pin = i ? v : S.pin; D.pinChecked = true; D.pinRes = i; save(); $('#pinres').innerHTML = i ? `<span class="good">Delivery by ${i.from} – ${i.to}</span><span class="muted"> · ${i.cod ? 'Cash on delivery available' : 'Prepaid only for this pincode'}</span>` : '<span class="bad">Enter a valid 6-digit pincode</span>'; },
+  verify(f) { const v = $('#vb').value.replace(/\s/g, '').toUpperCase(), b = f.dataset.b, r = $('#vres'); if (!v) { r.className = 'res bad'; r.textContent = 'Enter the batch number printed on your pack.'; return; } if (v === b) { r.className = 'res good'; r.innerHTML = `${ic('check', 16)} Match. Batch ${b} is in our records.`; } else { r.className = 'res bad'; r.textContent = 'No match. Check the number on your pack or contact support.'; } },
+  qa() { const v = $('#qa-t').value.trim(); if (v.length < 6) { $('#qa-err').textContent = 'Type your question (at least 6 characters)'; return; } (S.qa[D.pid] = S.qa[D.pid] || []).unshift([v]); save(); render(false); toast('Question saved'); },
+  review() { const n = $('#rv-n').value.trim(), t = $('#rv-t').value.trim(); if (!n || t.length < 10) { $('#rv-err').textContent = 'Add your name and a review of at least 10 characters'; return; } (S.reviews[D.pid] = S.reviews[D.pid] || []).unshift({ n, r: D.rate, t, d: fmtLong(Date.now()), img: D.img || null }); D.img = null; D.rate = 5; save(); render(false); toast('Thanks for your review'); },
+  coupon() { const m = applyCoupon($('#cp-in').value); const e = $('#cp-msg'); if (e) e.textContent = m; toast(m); },
+  checkout() { placeOrder(); },
+  contact() { const n = $('#c-n').value.trim(), e = $('#c-e').value.trim(), m = $('#c-m').value.trim(); if (!n || !emailOk(e) || m.length < 10) { $('#c-err').textContent = 'Add your name, a valid email and a message of at least 10 characters'; return; } $('#c-err').textContent = ''; ['c-n', 'c-e', 'c-m'].forEach(i => $('#' + i).value = ''); toast('Message noted. In this demo it is not sent anywhere.'); },
+  track() {
+    const id = $('#tr-id').value.trim().toUpperCase(), ph = $('#tr-ph').value.trim(); TR = { id, ph, res: null };
+    const o = S.orders.find(x => x.id === id && x.contact.phone === ph);
+    if (!o) { $('#tr-err').textContent = 'No order found for that ID and mobile number.'; $('#tr-res').innerHTML = ''; return; }
+    $('#tr-err').textContent = ''; TR.res = o; $('#tr-res').innerHTML = trackHTML(o);
+  },
+  profile() { S.user.name = $('#pf-n').value.trim(); S.user.email = $('#pf-e').value.trim(); save(); render(false); toast('Profile saved'); }
+};
+
+/* ============ events ============ */
+const cartAddFromPDP = (p, sub) => addCart(p.id, D.size, D.flav, D.qty, sub);
+const A = {
+  cart() { openCart(); },
+  closeall() { closeAll(); },
+  mclose() { $('#modal').hidden = true; $('#modal').innerHTML = ''; },
+  chat() { const c = $('#chat'); const o = !c.classList.contains('open'); closeAll(); c.classList.toggle('open', o); },
+  chatq(t) { const q = t.dataset.q, b = $('#chat-b'); b.insertAdjacentHTML('beforeend', `<div class="msg u">${esc(q)}</div><div class="msg b">${esc(CHAT[q])}</div>`); b.scrollTop = b.scrollHeight; },
+  rail(t) { const r = t.closest('.rail-wrap').querySelector('.rail'); r.scrollBy({ left: +t.dataset.d * r.clientWidth * .8, behavior: 'smooth' }); },
+  wish(t) { const id = t.dataset.id, i = S.wish.indexOf(id); if (i < 0) { S.wish.push(id); toast('Saved to wishlist'); } else { S.wish.splice(i, 1); toast('Removed from wishlist'); } save(); render(false); },
+  cmp(t) { toggleCmp(t.dataset.id, t); },
+  cmpbtn(t) { toggleCmp(t.dataset.id, t); },
+  cmpclear() { S.cmp = []; save(); render(false); },
+  quick(t) { const p = byId(t.dataset.id); if (addCart(p.id, 0, 0, 1, false)) toast(`Added: ${p.name}${vtxt(p, 0, 0) ? ' (' + vtxt(p, 0, 0) + ')' : ''}`); },
+  jump(t, e) { e.preventDefault(); const el = $('#' + t.dataset.t); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' }); },
+  fopen() { V.fo = true; $('#filters').classList.add('open'); $('#scrim').classList.add('on'); },
+  fclose() { closeAll(); },
+  fclear() { V.f = { brands: [], price: [], diet: [], types: [], flavs: [], sizes: [], rating: 0 }; render(false); },
+  fchip(t) { const k = t.dataset.k, v = t.dataset.v; if (k === 'rating') V.f.rating = 0; else V.f[k] = V.f[k].filter(x => String(x) !== v); render(false); },
+  f(t) { const k = t.dataset.k, v = ['price', 'sizes'].includes(k) ? +t.value : t.value, a = V.f[k], i = a.indexOf(v); if (t.checked && i < 0) a.push(v); if (!t.checked && i >= 0) a.splice(i, 1); render(false); },
+  frate(t) { V.f.rating = +t.value; render(false); },
+  sort(t) { V.sort = t.value; render(false); },
+  pflav(t) { D.flav = +t.dataset.i; render(false); },
+  psize(t) { D.size = +t.dataset.i; render(false); },
+  pview(t) { D.view = +t.dataset.i; const p = byId(D.pid); $('#gal').innerHTML = art(p, D.flav, D.view); $$('.gal-th button').forEach((b, i) => b.classList.toggle('on', i === D.view)); },
+  pqty(t) { D.qty = Math.max(1, Math.min(10, D.qty + +t.dataset.d)); render(false); },
+  btype(t) { D.sub = t.value === '1'; render(false); },
+  padd() { const p = byId(D.pid); if (cartAddFromPDP(p, D.sub)) { toast('Added to cart'); openCart(); } },
+  pnow() { const p = byId(D.pid); if (cartAddFromPDP(p, D.sub)) location.hash = '#checkout'; },
+  fbt(t) { const id = t.dataset.id, i = D.fbt.indexOf(id); if (t.checked && i < 0) D.fbt.push(id); if (!t.checked && i >= 0) D.fbt.splice(i, 1); render(false); },
+  fbtadd() { const p = byId(D.pid); let n = 0; D.fbt.forEach(id => { if (id === 'self') { if (cartAddFromPDP(p, D.sub)) n++; } else { const q = byId(id); if (q && addCart(q.id, 0, 0, 1, false)) n++; } }); toast(`${n} item${n === 1 ? '' : 's'} added to cart`); openCart(); },
+  rate(t) { D.rate = +t.dataset.i; $$('.starpick button').forEach((b, i) => b.classList.toggle('on', i < D.rate)); },
+  helpful(t) { S.helpful[t.dataset.k] = !S.helpful[t.dataset.k]; save(); t.textContent = S.helpful[t.dataset.k] ? 'Marked helpful ✓' : 'Helpful?'; },
+  lqty(t) { const l = S.cart[+t.dataset.i]; l.qty += +t.dataset.d; if (l.qty < 1) S.cart.splice(+t.dataset.i, 1); else l.qty = Math.min(10, l.qty); save(); cartChanged(); },
+  lrm(t) { S.cart.splice(+t.dataset.i, 1); save(); cartChanged(); },
+  linesub(t) { const l = S.cart[+t.dataset.i]; l.sub = t.checked; const m = S.cart.find((x, i) => i !== +t.dataset.i && x.pid === l.pid && x.size === l.size && x.flav === l.flav && !!x.sub === !!l.sub); if (m) { m.qty = Math.min(10, m.qty + l.qty); S.cart.splice(+t.dataset.i, 1); } save(); cartChanged(); },
+  coupon(t) { const m = applyCoupon(t.dataset.c); toast(m); },
+  comode(t) { S.co.mode = t.dataset.m; saveForm(); save(); render(false); },
+  pay(t) { saveForm(); S.co.pay = t.value; save(); render(false); },
+  emim(t) { saveForm(); S.co.emi = +t.dataset.m; save(); render(false); },
+  upisfx(t) { const i = $('#upi'); i.value = i.value.split('@')[0] + t.dataset.s; S.co.upi = i.value; i.focus(); },
+  redeem(t) { S.redeem = t.checked; save(); cartChanged(); },
+  logout() { logout(); },
+  copy(t) { const v = t.dataset.t; (navigator.clipboard ? navigator.clipboard.writeText(v) : Promise.reject()).then(() => toast('Copied'), () => { toast('Select the text and copy it'); }); },
+  otpsend(t) {
+    const ph = ($('#otp-ph') || {}).value || ''; if (!/^[6-9]\d{9}$/.test(ph.trim())) { const e = $('#e-otp-ph'); if (e) e.textContent = 'Enter a valid 10-digit mobile number'; return; }
+    OTP = { phone: ph.trim(), code: String(Math.floor(100000 + Math.random() * 900000)), verified: false }; S.co.ph = OTP.phone; reOtp(t.dataset.ctx);
+  },
+  otpstart(t) { OTP = { phone: t.dataset.ph, code: String(Math.floor(100000 + Math.random() * 900000)), verified: false }; reOtp('order'); },
+  otpverify(t) {
+    const v = ($('#otp-c') || {}).value || '';
+    if (v.trim() !== OTP.code) { const e = $('#e-otp-c'); if (e) e.textContent = 'That code does not match. Check the demo code shown above.'; return; }
+    const ctx = t.dataset.ctx, oid = ctx === 'order' ? ($('#otpbox') || {}).dataset.oid : null; loginUser(OTP.phone, oid);
+    toast('Signed in'); if (ctx === 'checkout' || ctx === 'account' || ctx === 'order') render(false);
+  },
+  acctab(t) { ACC.tab = t.dataset.k; render(false); },
+  subskip(t) { const x = S.subs.find(s => s.id === t.dataset.id); if (x) { x.next += 30 * DAY; save(); render(false); toast('Next delivery skipped'); } },
+  subcancel(t) { const x = S.subs.find(s => s.id === t.dataset.id); if (x) { x.on = false; save(); render(false); toast('Subscription cancelled'); } },
+  trackfill(t) { TR = { id: t.dataset.id, ph: t.dataset.ph, res: null }; },
+  advance(t) { const o = S.orders.find(x => x.id === t.dataset.id); if (o && (o.stage || 0) < 4) { o.stage = (o.stage || 0) + 1; save(); TR.res = o; $('#tr-res').innerHTML = trackHTML(o); } },
+  qa(t) { Q.a[QS[Q.step].k] = t.dataset.v; Q.step++; render(false); window.scrollTo(0, 0); },
+  qback() { Q.step = Math.max(0, Q.step - 1); render(false); },
+  qreset() { Q = { step: 0, a: {} }; render(false); },
+  qaddall() { const { out } = recommend(Q.a); out.forEach(x => addCart(x.id, 0, 0, 1, false)); toast('Stack added to cart'); openCart(); }
+};
+function reOtp(ctx) { const b = $('#otpbox'); if (b) b.innerHTML = (ctx === 'order' && !OTP.code ? '' : otpHTML(ctx)); }
+function toggleCmp(id, t) {
+  const i = S.cmp.indexOf(id);
+  if (i < 0) { if (S.cmp.length >= 3) { toast('You can compare up to 3 products'); if (t && t.type === 'checkbox') t.checked = false; return; } S.cmp.push(id); } else S.cmp.splice(i, 1);
+  save(); render(false);
+}
+function saveForm() {
+  const g = id => ($('#' + id) ? $('#' + id).value : undefined), c = S.co;
+  [['em', 'em'], ['ph', 'ph'], ['nm', 'nm'], ['ad', 'ad'], ['pin', 'pin'], ['city', 'city'], ['st', 'st'], ['upi', 'upi'], ['cn', 'cn'], ['cx', 'cx'], ['cname', 'cname'], ['bank', 'bank']].forEach(([k, id]) => { const v = g(id); if (v !== undefined) c[k] = v; });
+}
+document.addEventListener('click', e => {
+  const t = e.target.closest('[data-act]'); if (!t) return;
+  if (t.matches('input,select,textarea')) return;
+  const f = A[t.dataset.act]; if (f) f(t, e);
+});
+document.addEventListener('change', e => {
+  const t = e.target; if (t.id === 'rimg') { const f = t.files[0]; if (f) shrink(f, d => { D.img = d; toast(d ? 'Photo attached' : 'Could not read that image'); }); return; }
+  if (t.id === 'st' || t.id === 'bank') { saveForm(); save(); }
+  const a = t.closest('[data-act]'); if (!a || !a.matches('input,select')) return;
+  const f = A[a.dataset.act]; if (f) f(a, e);
+});
+document.addEventListener('input', e => {
+  const t = e.target;
+  if (t.id === 'cn') { t.value = t.value.replace(/\D/g, '').slice(0, 19).replace(/(.{4})/g, '$1 ').trim(); }
+  if (t.id === 'cx') { let v = t.value.replace(/\D/g, '').slice(0, 4); if (v.length > 2) v = v.slice(0, 2) + '/' + v.slice(2); t.value = v; }
+  if (['ph', 'pin', 'otp-ph', 'otp-c', 'tr-ph', 'pinp', 'cv'].includes(t.id)) t.value = t.value.replace(/\D/g, '');
+  if (t.closest('#co') && t.id !== 'cv') { const k = t.id; if (k) { S.co[k] = t.value; if (k === 'cv') delete S.co[k]; } }
+  if (t.id === 'pin' && $('#pinmsg')) { const i = pinInfo(t.value); $('#pinmsg').innerHTML = i ? `<span class="good">Delivery by ${i.from} – ${i.to}</span>` : (t.value.length === 6 ? '<span class="bad">Check this pincode</span>' : ''); if (i) { S.pin = t.value; } }
+  if (t.id === 'q') suggest(t.value);
+});
+document.addEventListener('submit', e => { const f = e.target, k = f.dataset.form; if (!k) return; e.preventDefault(); if (FORMS[k]) FORMS[k](f); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeAll(); if (!$('#modal').hidden) A.mclose(); $('#sugg').hidden = true; } });
+document.addEventListener('click', e => { if (!e.target.closest('#sf')) $('#sugg').hidden = true; });
+function shrink(file, cb) { const r = new FileReader(); r.onload = () => { const im = new Image(); im.onload = () => { const s = Math.min(1, 240 / Math.max(im.width, im.height)), c = document.createElement('canvas'); c.width = Math.max(1, Math.round(im.width * s)); c.height = Math.max(1, Math.round(im.height * s)); c.getContext('2d').drawImage(im, 0, 0, c.width, c.height); cb(c.toDataURL('image/jpeg', .7)); }; im.onerror = () => cb(null); im.src = r.result; }; r.onerror = () => cb(null); r.readAsDataURL(file); }
+
+/* ----- search ----- */
+function matches(q) { const ws = q.toLowerCase().split(/\s+/).filter(Boolean); return ws.length ? P.filter(p => { const hay = (p.name + ' ' + p.brand + ' ' + CATN[p.cat] + ' ' + p.type + ' ' + p.goals.join(' ') + ' ' + p.flavs.join(' ')).toLowerCase(); return ws.every(w => hay.includes(w)); }) : []; }
+function suggest(v) {
+  const box = $('#sugg'), r = matches(v.trim()).slice(0, 6);
+  if (!v.trim()) { box.hidden = true; return; }
+  box.innerHTML = r.length ? r.map(p => `<a href="#product-${p.id}"><span class="st">${art(p, 0, 0)}</span><span>${esc(p.name)}<small>${esc(CATN[p.cat])} · from ${inr(lowest(p).price)}</small></span></a>`).join('') + `<a href="#search-${slug(v)}"><b>See all results for “${esc(v.trim())}”</b></a>` : `<a href="#shop"><span>No match for “${esc(v.trim())}”. Browse all products</span></a>`;
+  box.hidden = false;
+}
+$('#sf').addEventListener('submit', e => { e.preventDefault(); const v = $('#q').value.trim(); if (!v) return; $('#sugg').hidden = true; location.hash = '#search-' + (slug(v) || 'all'); });
+$('#sbtn').innerHTML = ic('search', 18);
+
+/* ============ boot ============ */
+window.addEventListener('hashchange', () => { render(true); });
+drawFooter(); drawChat(); cartChanged(); render(true);
+(() => { try { if (sessionStorage.getItem('fg_pop')) return; } catch (e) {}
+  const mark = () => { try { sessionStorage.setItem('fg_pop', '1'); } catch (e) {} };
+  document.addEventListener('mouseout', e => { if (!e.relatedTarget && e.clientY <= 0 && !S.sawPop && !location.hash.startsWith('#checkout')) { mark(); showPopup(); } });
+  setTimeout(() => { if (!S.sawPop && matchMedia('(pointer:coarse)').matches && !location.hash.startsWith('#checkout')) { mark(); showPopup(); } }, 45000);
+})();
+</script>
+
+</body>
+</html>
